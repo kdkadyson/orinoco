@@ -1,12 +1,20 @@
 {
   "name": "orinoco",
   "version": "1.0.0",
-  "description": "This is the back end server for Project 5 of the Junior Web Developer path.",
+  "description": "This is the back end server for Project 5 of Web Developer path.",
   "main": "index.js",
   "scripts": {
-    "sass" "--watch ./sass/main.scss:./public/css/style.css --style compressed"
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kadyson/KadySonko_5_03-03-2021.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kadyson/KadySonko_5_03-03-2021/issues"
+  },
+  "homepage": "https://github.com/kadyson/KadySonko_5_03-03-2021#readme",
   "browserslist": "last 4 versions"
   }
