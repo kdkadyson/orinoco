@@ -1,0 +1,31 @@
+        /* PAGE 3 PANIER*/
+
+#form{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 3px solid rgba(80, 43, 226, 0.777);
+    width: 600px;
+    height: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 380px;
+}
+input #nom{
+    color: red;
+}
+label{
+    font-weight: 900;
+    font-size: 20px;
+}
+.box_size input{
+    width: 230px;
+    height: 40px;
+    border: 3px solid rgba(80, 43, 226, 0.777);
+    border-radius: 10px 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+}
+

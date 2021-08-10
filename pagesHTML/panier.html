@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="Oribear, création d'ours en peluche faits à la main par des spécialistes et des passionnés de la confection artisanale d'ours en peluche, avec un savoir-faire trés apprécié des connaisseurs et des amateurs de techniques anciennes jumélées à la technologie d'aujourd'hui! Oribear est une filiale de l'entreprise de commerce en ligne Orinoco"/>
-        <link rel="stylesheet" href="public/css/style.css"/>
+        <link rel="stylesheet" href="../public/css/style.css"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <title> Oribear - Mon Panier </title>
     </head>
@@ -34,15 +34,82 @@
 
     <!--SECTION MAIN-->
     <main>
-        <section class="panier_commande">
-            <div id="container">
-                <!--TABLEAU PANIER-->
+        <section id="panierDescription">
+            <p> Hélas, votre Panier est vide pour le moment ! </p>
+        </section>
+        <section id="containerPanier">
+            <div class="panier_uno">
+                <div class="panier_photo">
+                    <div class="panier_img">PHOTO</div>
+                </div>
+                <div class="panier_description">
+                    <div class="texte_description-panier">
+                        <p>Nom</p>
+                        <p>Prix Unitaire</p>
+                        <p>Quantité</p>
+                        <input type="button" value="Supprimer" id="supprimerPanier"/>
+                    </div>
+                </div>
             </div>
-            <form>
-                <!--FORMULAIRE COMMANDE-->
-            </form>
-        </section>    
+            <div class="panier_uno uno_marge">
+                <div class="panier_photo">
+                    <div class="img_panier">PHOTO</div>
+                </div>
+                <div class="panier_description">
+                    <div class="texte_description-panier">
+                        <p>Nom</p>
+                        <p>Prix Unitaire</p>
+                        <p>Quantité</p>
+                        <input type="button" value="Supprimer" id="supprimerPanier"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="prix_valider">
+            <div id="prixPanier">
+                <p>Prix Total : </p>
+            </div>
+            <div id="validerPanier"> 
+                <a href="#form"  id="boutonPanier" class="bouton_panier"> Valider mon Panier</a>
+            </div>   
+        </div>
     </main>
+
+    <h1 class="titre_commander">
+        Passer votre commande en renseignant vos informations ci-dessous :
+    </h1>
+    <form action="#" method="POST" id="form">
+        <div>
+            <input type="radio" id="Mr" name="drone" value="Mr" checked>
+            <label for="Mr">Mr</label>
+            <input type="radio" id="Mme" name="drone" value="Mme" checked>
+            <label for="Mme">Mme</label>
+        </div>
+        <div class="box_size">
+            <label for="nom">Nom :</label><br/>
+            <input type="text" id="nom" name="nom" required name="required" placeholder="ex:  LeBienvenue"/>
+        </div>
+        <div class="box_size">
+            <label for="prenom">Prenom :</label><br/>
+            <input type="text" id="prenom" name="prenom" required name="required" placeholder="ex:  Noé"/>
+        </div>
+        <div class="box_size">
+            <label for="adresse">Adresse :</label><br/>
+            <input type="text" id="adresse" name="adresse" required name="required" placeholder="ex:  50,rue des Oursons 75003"/>
+        </div>
+        <div class="box_size">
+            <label for="ville">Ville :</label><br/>
+            <input type="text" id="ville" name="text" required name="required" placeholder="ex:  Paris"
+                pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"/>
+        </div>
+        <div class="box_size">
+            <label for="email">E-mail :</label><br/>
+            <input type="email" id="email" name="email" required name="required" placeholder="ex:  oribear@gmail.fr"
+                pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}"/>
+        </div>
+        <input type="submit" value="Commander" id="formSend" class="form_send"/>
+    </form>
+        
       
     <!--FOOTER-->
     <footer>
@@ -71,8 +138,8 @@
     
     
     <!--JavaScript-->  
-    <script src="js/panier.js"></script>
-    <script src="js/ours.js"></script>
+    <script src="./panier.js"></script>
+    <script src="./teddy.js"></script>
 
     </body>
 

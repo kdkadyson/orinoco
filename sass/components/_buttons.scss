@@ -1,1 +1,65 @@
 
+                /* Bouton PAGE PRODUIT */
+
+/* Bouton Mettre ds Panier */
+.texte_produit input{
+    width: 120px;
+    height: 40px;
+    border: 3px solid rgba(205, 134, 63, 0.77);
+    border-radius: 20px 20px;
+    align-self: center;
+    margin-left: 50px;
+    margin-top: 80px;
+    cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.texte_produit input:hover{
+    background-color: rgba(205, 134, 63, 0.927);
+    color: #fff;
+    width: 200px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Bouton Supprimer */
+.texte_panier input{
+    width: 80px;
+    height: 30px;
+    border-radius: 10px 10px;
+    align-self: center;
+    margin-left: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Bouton Valider Panier */
+#validerPanier{
+    width: 220px;
+    height: 30px;
+    border: 3px solid rgba(205, 134, 63, 0.77);
+    border-radius: 50px 50px;
+    cursor: pointer;
+    text-align: center;
+    color: #000;
+    background-color: rgba(205, 134, 63, 0.77);
+    margin-top: 40px;
+    margin-left: 350px;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#validerPanier:hover{
+    width: 260px;
+    height: 40px;
+    background-color: #fff;
+    font-size: 22px;
+    font-weight: bolder;
+    padding-top: 10px;
+    color: rgba(205, 134, 63, 0.927);
+}
+.bouton_panier:hover{
+    color: rgba(205, 134, 63, 0.927);
+}

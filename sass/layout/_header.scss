@@ -1,0 +1,25 @@
+header{
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid rgba(221, 160, 221, 0.989);
+}
+img{
+    margin-left: 50px;
+}
+nav{
+    width: 100%;
+    display: flex;
+    margin-right: 50px;
+    justify-content: flex-end;
+    margin-top: 150px;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+}
+ul li{
+    padding-right: 40px;
+    font-size: 20px;
+}

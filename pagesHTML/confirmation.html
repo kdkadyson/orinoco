@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="Oribear, création d'ours en peluche faits à la main par des spécialistes et des passionnés de la confection artisanale d'ours en peluche, avec un savoir-faire trés apprécié des connaisseurs et des amateurs de techniques anciennes jumélées à la technologie d'aujourd'hui! Oribear est une filiale de l'entreprise de commerce en ligne Orinoco"/>
-        <link rel="stylesheet" href="public/css/style.css"/>
+        <link rel="stylesheet" href="../public/css/style.css"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <title> Oribear - Confirmation de commande </title>
     </head>
@@ -34,10 +34,16 @@
     </div>
 
     <!--SECTION MAIN-->
-    <main>
-        <div id="confirmation" class="confirmation">
-        </div>
-    </main>
+    <section class="confirmation">
+		<div class="confirmation__resume">
+			<i class="fas fa-check"></i>
+			<h2 class="remerciement"> Votre commande à bien été enregistrée. <br/>
+                Nous vous remercions pour votre achat <span id="lastName"></span> !</h2>
+			<div class="confirmation_id">
+				<p>Référence Commande : <span id="confirmationId"></span></p>
+			</div>
+		</div>
+	</section>
       
     <!--FOOTER-->
     <footer>
@@ -66,8 +72,8 @@
    
     
     <!--JavaScript-->  
-    <script src="js/confirmation.js"></script>
-    <script src="js/ours.js"></script>
+    <script src="./confirmation.js"></script>
+    <script src="./teddy.js"></script>
 
     </body>
 

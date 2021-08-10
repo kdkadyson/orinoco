@@ -1,0 +1,12 @@
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 4px solid rgba(221, 160, 221, 0.989);
+}
+footer h2{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+footer h2,p{
+    font-weight: bold;
+}
