@@ -1,7 +1,7 @@
 
 //APPEL DE L'API / RÉCUPÉRATION DES ARTICLES DE LA LISTE
 
-/*fetch("http://localhost:3000/api/teddies")
+fetch("http://localhost:3000/api/teddies")
     .then(response => response.json())
     .then(function (listeProduct) {
         for(let product of listeProduct) {
@@ -36,11 +36,11 @@ const display = teddy => {
     .catch(function (err) {
         console.log("fetch Error")
         alert("Désolé une erreur est survenue, ou la page démandée n'existe pas ! Veuillez réesayer")
-    })*/
+    })
 
 
 //FUNCTION INITIAL EXÉCUTÉE DÈS CHARGEMENT
-(async function() {
+/*(async function() {
     const products = await getProducts()
     for (product of products) {
         displayProduct(product)
@@ -78,4 +78,4 @@ const display = teddy => {
                 </div>
             </div>
         </article>`
-    }
+    }*/
