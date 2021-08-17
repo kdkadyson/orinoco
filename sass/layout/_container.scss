@@ -2,13 +2,20 @@
     /* BANNIÈRE */
 
 .banniere{
-    text-align: center;
+    /*text-align: center;*/
+    display: flex;
+    position: relative;
+    height: 500px;
+    background: url(../../img\ /banniere.png) no-repeat;
     border-bottom: 4px solid rgba(221, 160, 221, 0.989);
     padding-bottom: 50px;
 }
-.banniere img{
-    object-fit: cover;
+
+.banniere_text{
+    position: absolute;
+    margin-bottom: 200px;
 }
+
 .banniere h1{
     font-size: 70px;
     font-weight: bolder;

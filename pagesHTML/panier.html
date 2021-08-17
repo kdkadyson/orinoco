@@ -38,19 +38,6 @@
             <p> Hélas, votre Panier est vide pour le moment ! </p>
         </section>
         <section id="containerPanier">
-            <div class="panier_uno">
-                <div class="panier_photo">
-                    <div class="panier_img">PHOTO</div>
-                </div>
-                <div class="panier_description">
-                    <div class="texte_description-panier">
-                        <p>Nom</p>
-                        <p>Prix Unitaire</p>
-                        <p>Quantité</p>
-                        <input type="button" value="Supprimer" id="supprimerPanier"/>
-                    </div>
-                </div>
-            </div>
             <div class="panier_uno uno_marge">
                 <div class="panier_photo">
                     <div class="panier_img">PHOTO</div>
@@ -60,6 +47,7 @@
                         <p>Nom</p>
                         <p>Prix Unitaire</p>
                         <p>Quantité</p>
+                        <p>Article Prix Total</p>
                         <input type="button" value="Supprimer" id="supprimerPanier"/>
                     </div>
                 </div>
@@ -67,7 +55,8 @@
         </section>
         <div class="prix_valider">
             <div id="prixPanier">
-                <p>Prix Total : </p>
+                <h2>Prix Total : </h2>
+                <p id="prixTotal"></p>
             </div>
             <div id="validerPanier"> 
                 <a href="#form"  id="boutonPanier" class="bouton_panier"> Valider mon Panier</a>
@@ -78,6 +67,8 @@
     <h1 class="titre_commander">
         Passer votre commande en renseignant vos informations ci-dessous :
     </h1>
+
+    <!-- SECTION FORMULAIRE -->
     <form action="#" method="POST" id="form">
         <div>
             <input type="radio" id="Mr" name="drone" value="Mr" checked>
@@ -138,8 +129,8 @@
     
     
     <!--JavaScript-->  
-    <script src="./panier.js"></script>
-    <script src="./teddy.js"></script>
+    <script src="../js/ours.js"></script>
+    <script src="../js/panier.js"></script>
 
     </body>
 
