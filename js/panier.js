@@ -1,8 +1,8 @@
 
-//RÉCUPÉRATION DES PROSUITS DU LOCAL STORAGE
+//RÉCUPÉRATION DES PRODUITS DU LOCAL STORAGE
 const teddies =JSON.parse(localStorage.getItem("panier")) ? JSON.parse(localStorage.getItem("panier")) : [];
 
-//RÉCUPÈRER HTML
+//RÉCUPÉRER HTML
 const contaner = document.getElementById("containerPanier");
 
 //INITIALISER LE PRIX TOTAL À 0
@@ -116,8 +116,8 @@ checkInput = () =>{
     if(checkMessage !=""){
         alert("il est nécessaire de :" + "\n" + checkMessage);
     } 
-    //RÉCUPÉRER LES DONNÉES CLIENTS
-    //objet
+    //RÉCUPÉRER LES DONNÉES CLIENTS DS OBJECT
+    
     else{
         client = {
             lasttName : nom,

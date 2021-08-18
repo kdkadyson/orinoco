@@ -3,7 +3,7 @@
 const searchParams = new URLSearchParams(location.search);
 const newId = searchParams.get("_id");
 
-//RÉCUPÈRER HTML
+//RÉCUPÉRER HTML
 const container = document.getElementById("containerProduit");
 
 //ENVOI AU LOCAL STORAGE

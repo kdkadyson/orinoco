@@ -2,9 +2,9 @@
 fetch("http://localhost:3000/api/teddies")
 .then(response => response.json()) 
 .then(listTeddyItem => {
-    for(let product of listTeddyItem){ //chq produit de la liste va créer une new var jsonTeddyItem  
-        let teddy = new Teddies(product); //ttes les var teddyItem créée 
-        document.getElementById("container").innerHTML += // mettre la photo et attributs ds html
+    for(let product of listTeddyItem){ 
+        let teddy = new Teddies(product);  
+        document.getElementById("container").innerHTML += 
             `<div id="produitsEtPhotos">
                 <div class="produits_img">
                     <img src=${teddy.imageUrl} alt="Photo d'article d'ours en peluches"/>
