@@ -38,7 +38,7 @@ teddies.forEach((teddy,i) =>{
 });
 
 //RÉCUPÉRER / BOUCLE CALCUL PRIX TOTAL PANIER
-funtion totalPanier(teddy){ 
+function totalPanier(teddy){ 
     for(let i = 0; i < teddy.quantite; i++){
         addPanierId.push(teddy._id);   
     }
@@ -56,7 +56,7 @@ function deleteItem(_id){
     window.location.reload();
 }
 document.getElementById("supprimerPanier")
-    .forEach(deleteBtn => {
+teddies.forEach((deleteBtn) => {
         deletebtn.addEventlistener("click",() => deleteItem(deleteBtn.dataset.id))
     });
 
@@ -93,7 +93,7 @@ checkInput = () =>{
         console.log("Administration Prénom ok")
     };
     //adresse avec ou ss no de rue et ss charactères spéciaux
-    if(checkSpecialCharacter.test(adresse) == true || adresse =""){
+    if(checkSpecialCharacter.test(adresse) == true || adresse == ""){
         checkMessage = checkMessage + "\n" + "Vérifier ou renseigner votre Adresse";
     }else{
         console.log("Administration Adresse ok");

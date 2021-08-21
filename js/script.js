@@ -15,7 +15,7 @@ fetch("http://localhost:3000/api/teddies")
                         <p> ${teddy._id} </p>
                         <p> ${teddy.description} </p>
                         <p> ${teddy.price / 100}€ </p>
-                        <a href ="../pagesHTML/produit.html?_id=${teddy._id}"><input type="button" value="Voir l'article" class="" id="voirarticle">
+                        <a href ="../pagesHTML/produit.html?_id=${teddy._id}"><input type="button" value="Voir l'article" class="" id="voirArticle">
                     </div>
                 </div>
             </div>`
@@ -26,3 +26,5 @@ fetch("http://localhost:3000/api/teddies")
 /*.catch(function (err) {
         alert("Désolé une erreur est survenue, ou la page démandée n'existe pas ! Veuillez réesayer")
         });*/
+
+document.getElementById("voirArticle");

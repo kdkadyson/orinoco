@@ -1,7 +1,15 @@
 
-//RÉCUPÉRATION URL ET ID PRODUIT 
+/*RÉCUPÉRATION URL ET ID PRODUIT 
 const searchParams = new URLSearchParams(location.search);
-const newId = searchParams.get("_id");
+const newId = searchParams.get("_id");*/
+
+/*function voirArticle (teddyId){
+    let teddySelected = getArticle()
+}
+
+function getArticle(){
+    let listeFavorite = document.location
+}*/
 
 //RÉCUPÉRER HTML
 const container = document.getElementById("containerProduit");
@@ -72,18 +80,19 @@ const addPanierItem = teddy => {
     addBasket(panier)
     };
 
-//CHANGEMENT ADRESSE API
+/*CHANGEMENT ADRESSE API
 fetch ("http://localhost:3000/api/teddies" + newId) 
     .then(response => response.json())
     .then(function (product){
         const itemChoisi = new Teddies(product);
         display(itemChoisi);
-    })
+    })*/
 
 //SI API ERREUR
-.catch(function(err){
+/*.catch(function(err){
     alert("Désolé une erreur est survenue, ou la page démandée n'existe pas ! Veuillez réesayer")
-});
+};*/
+
 
 
           

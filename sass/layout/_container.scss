@@ -1,29 +1,57 @@
 
     /* BANNIÈRE */
 
-.banniere{
-    /*text-align: center;*/
-    display: flex;
-    position: relative;
-    height: 500px;
-    background: url(../../img\ /banniere.png) no-repeat;
+.split{
     border-bottom: 4px solid rgba(221, 160, 221, 0.989);
-    padding-bottom: 50px;
 }
 
+.banniere{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 60px;
+    background-color: #F3E9F1
+}
+.image{
+    margin-right: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 25rem;
+    width: 100rem;
+}
 .banniere_text{
+    width: inherit;
     position: absolute;
-    margin-bottom: 200px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
-
 .banniere h1{
     font-size: 70px;
-    font-weight: bolder;
-    
+    font-weight: 800;
+    margin-top: 100px;
+    color: #fff;
 }
-.banniere p{
-    font-size: 20px;
-    font-weight: bold;
+.banniere h2{
+    font-size: 40px;
+    font-weight: 600; 
+    color: #000;
+}
+.banniere-load{
+    animation: name-load 1s ease-in-out forwards;
+    transform: scale(0);
+}
+.banniere-load2{
+    animation: name-load 1s ease-in-out 800ms forwards;
+    transform: scale(0);
+}
+@keyframes name-load{
+    0%{
+        transform: translate(-100%);
+    }
+    100%{
+        transform: translate(0);
+    }
 }
 
     /* HOME PAGE */
