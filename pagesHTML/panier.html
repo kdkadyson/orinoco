@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="Oribear, création d'ours en peluche faits à la main par des spécialistes et des passionnés de la confection artisanale d'ours en peluche, avec un savoir-faire trés apprécié des connaisseurs et des amateurs de techniques anciennes jumélées à la technologie d'aujourd'hui! Oribear est une filiale de l'entreprise de commerce en ligne Orinoco"/>
         <link rel="stylesheet" href="../public/css/style.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet"/>
+        <link  href="../fontawesome  /css/all.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <title> Oribear - Mon Panier </title>
     </head>
@@ -13,121 +15,137 @@
     <body>
     <!--HEADER-->
     <header>
-        <img class="logo" src="../img /logo.png" alt="Image du logo Orinico création d'ours en peluche faits à la main" />
+        <img src="../img /logo.png" alt="Image du logo Orinico création d'ours en peluche faits à la main" class="logo"/>
         <nav>
             <ul>
-                <li><a href="home.html"> Accueil </a></li>
-                <li><a href=""> Mes Commandes </a></li>
-                <li><a href="panier.html" id=""> Panier <i class="fas fa-shopping-cart"></i></a></li>
+                <li><a href="index.html"> Accueil </a></li>
+                <li><a href="panier.html" class="panier_marge"> Mon Panier<i class="fas fa-shopping-cart"></i></a></li>
             </ul>
         </nav>
     </header>
+
+    <!--DIV DE SÉPARATION-->
+    <div class="split"></div>
     
     <!--SECTION BANNIÈRE-->
     <div class="banniere">
-        <img src="../img /banniere.png" alt="Photo de manufacture de créaation d'ours en peluche faits à la main"/>
+        <img src="../img /banniere.png" alt="Photo de manufacture de créaation d'ours en peluche faits à la main" class="img">
         <div class="banniere_text">
-            <h1> Oribear </h1>
-            <p> Votre Panier </p>
+            <h1 class="banniere-load"> Oribear </h1>
+            <h2 class="banniere-load2"> création d'ours en peluche faits à la main <br/>
+                par des spécialistes et passionnés de la confection artisanale. 
+            </h2>
         </div>
     </div>
 
     <!--SECTION MAIN-->
     <main>
-        <section id="panierDescription">
-            <p> Hélas, votre Panier est vide pour le moment ! </p>
+        <section id="panierVide">
+            <p><i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
+                Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i></p>
         </section>
         <section id="containerPanier">
-            <div class="panier_uno uno_marge">
-                <div class="panier_photo">
-                    <div class="panier_img">PHOTO</div>
+            <h1>Votre Panier</h1>
+            <div class="item-panier">
+                <div class="panier_uno">
+                    <div class="panier_photo">
+                        <img src=${teddy.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
+                    </div>
+                    <div class="panier_description">
+                        <div class="texte_description-panier">
+                            <p class="teddy-nom">${teddy.name}</p>
+                            <p class="teddy-quantity">Quantité : ${teddy.quantity}</p>
+                            <p class="teddy-total"> :Prix Total : ${teddy.quantite * teddy.price / 100} €</p>
+                            <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
+                        </div>
+                    </div>
                 </div>
-                <div class="panier_description">
-                    <div class="texte_description-panier">
-                        <p>Nom</p>
-                        <p>Prix Unitaire</p>
-                        <p>Quantité</p>
-                        <p>Article Prix Total</p>
-                        <input type="button" value="Supprimer" id="supprimerPanier"/>
+                <div class="panier_uno">
+                    <div class="panier_photo">
+                        <img src=${teddy.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
+                    </div>
+                    <div class="panier_description">
+                        <div class="texte_description-panier">
+                            <p class="teddy-nom">${teddy.name}</p>
+                            <p class="teddy-quantity">Quantité : ${teddy.quantity}</p>
+                            <p class="teddy-total"> :Prix Total : ${teddy.quantite * teddy.price / 100} €</p>
+                            <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <div class="prix_valider">
             <div id="prixPanier">
-                <h2>Prix Total : </h2>
-                <p id="prixTotal"></p>
+                <p>Prix Total : </p>
             </div>
             <div id="validerPanier"> 
-                <a href="#form"  id="boutonPanier" class="bouton_panier"> Valider mon Panier</a>
+                <a href="#form" id="boutonPanier" class="bouton_panier"> Valider mon Panier</a>
             </div>   
         </div>
     </main>
 
-    <h1 class="titre_commander">
-        Passer votre commande en renseignant vos informations ci-dessous :
-    </h1>
-
-    <!-- SECTION FORMULAIRE -->
-    <form action="#" method="POST" name="basketForm" id="form">
-        <div>
-            <input type="radio" id="Mr" name="drone" value="Mr" checked>
-            <label for="Mr">Mr</label>
-            <input type="radio" id="Mme" name="drone" value="Mme" checked>
-            <label for="Mme">Mme</label>
-        </div>
-        <div class="box_size">
-            <label for="nom">Nom :</label><br/>
-            <input type="text" id="nom" name="nom" required name="required" placeholder="ex:  LeBienvenue"/>
-        </div>
-        <div class="box_size">
-            <label for="prenom">Prenom :</label><br/>
-            <input type="text" id="prenom" name="prenom" required name="required" placeholder="ex:  Noé"/>
-        </div>
-        <div class="box_size">
-            <label for="adresse">Adresse :</label><br/>
-            <input type="text" id="adresse" name="adresse" required name="required" placeholder="ex:  50,rue des Oursons 75003"/>
-        </div>
-        <div class="box_size">
-            <label for="ville">Ville :</label><br/>
-            <input type="text" id="ville" name="text" required name="required" placeholder="ex:  Paris"
-                pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"/>
-        </div>
-        <div class="box_size">
-            <label for="email">e-mail :</label><br/>
-            <input type="email" id="email" name="email" required name="required" placeholder="ex:  oribear@gmail.fr"
-                pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}"/>
-        </div>
-        <input type="submit" value="Commander" id="formSend" class="form_send"/>
+    <form action="#" method="POST">
+        <fieldset id="form" class="form">
+            <legend>Passer votre commande en renseignant vos informations ci-dessous :</legend>
+            <div class="">
+                <input type="radio" id="Mr" name="drone" value="Mr" checked>
+                <label for="Mr">Mr</label>
+                <input type="radio" id="Mme" name="drone" value="Mme" checked>
+                <label for="Mme">Mme</label>
+            </div>
+            <div class="box_size2">
+                <label for="nom">Nom :</label><br/>
+                <input type="text" id="nom" name="nom" required name="required" placeholder="ex:  LeBienvenue"/>
+            </div>
+            <div class="box_size2">
+                <label for="prenom">Prenom :</label><br/>
+                <input type="text" id="prenom" name="prenom" required name="required" placeholder="ex:  Noé"/>
+            </div>
+            <div class="box_size2">
+                <label for="adresse">Adresse :</label><br/>
+                <input type="text" id="adresse" name="adresse" required name="required" placeholder="ex:  50,rue des Oursons 75003"/>
+            </div>
+            <div class="box_size2">
+                <label for="ville">Ville :</label><br/>
+                <input type="text" id="ville" name="text" required name="required" placeholder="ex:  Paris"
+                    pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"/>
+            </div>
+            <div class="box_size2">
+                <label for="email">E-mail :</label><br/>
+                <input type="email" id="email" name="email" required name="required" placeholder="ex:  oribear@gmail.fr"
+                    pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}"/>
+            </div>                                 
+            <input type="submit" value="Commander" onclick="location.href='confirmation.html';" id="formSend" class="form_send"/>
+            <a href="#" class="form_close">&times;</a>
+        </fieldset>
     </form>
-        
-      
+    
     <!--FOOTER-->
+
     <footer>
         <div> 
-            <h2> À Propos </h2>
+            <h2 class=" marge"> À Propos ... </h2>
                 <a href="#"><p> Orinoco / Oribear </p></a>
-                  <a href="#"><p> Conditions Générales de Vente </p>
+                <a href="#"><p> Conditions Générales de Vente </p>
                 <a href="#"><p> Données et Confidentialité </p>
                 <a href="#"><p> Charte Qualité </p>
         </div>
-
         <div> 
-            <h2> Besoin d'Assistance ? </h2>
+            <h2 class=" marge"> Besoin d'Assistance ? </h2>
             <a href="#"><p> FAQ </p></a>
             <a href="#"><p> Retours / Remboursements </p>
             <a href="mailto:oribear@gmail.com"><p> Nous Contacter </p></a>
         </div>
-
         <div> 
-            <h2> Suivez-Nous </h2>
-                <a href="#"> <p> Facebook </p></a>
-                <a href="#"><p> Twitter </p></a>
-                <a href="#"><p> Instagram </p></a>
+            <h2> Suivez-Nous ! </h2>
+                <a href="#"><i class="fab fa-facebook-f"></i></p></a>
+                <a href="#"><i class="fab fa-twitter"></i></p></a>
+                <a href="#"><i class="fab fa-instagram"></i></p></a>
         </div>
     </footer>
-    
-    
+
+
     <!--JavaScript-->  
     <script src="../js/ours.js"></script>
     <script src="../js/panier.js"></script>

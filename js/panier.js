@@ -2,14 +2,14 @@
 //RÉCUPÉRATION DES PRODUITS DU LOCAL STORAGE
 const teddies =JSON.parse(localStorage.getItem("panier")) ? JSON.parse(localStorage.getItem("panier")) : [];
 
+//RÉCUPÉRATION ID PRODUIT 
+const addPanierId = [];
+
 //RÉCUPÉRER HTML
 const contaner = document.getElementById("containerPanier");
 
 //INITIALISER LE PRIX TOTAL À 0
 const totalPrice = 0;
-
-//RÉCUPÉRATION ID PRODUIT 
-const addPanierId = [];
 
 //CALCUL DU PRIX TOTAL DU PANIER / SEND LOCAL STORAGE
 function totalPanier(teddy){
@@ -18,31 +18,32 @@ function totalPanier(teddy){
     localStorage.getItem("prixTotal", JSON.stringify(prixTotal));
 };
 
-//BOUCLE AFFICHAGE
-teddies.forEach((teddy,i) =>{
-    container.innerHTML +=
-    `<div class="panier_uno uno_marge">
-        <div class="panier_photo">
-            <img src=${teddy.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
-        </div>
-        <div class="panier_description">
-            <div class="texte_description-panier">
-                <p>${teddy.name}</p>
-                <p>${teddy.price / 100}€</p>
-                <p>${teddy.quantite}</p>
-                <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
-                <p>${teddy.quantite * teddy.price / 100} €</p>
-            </div>
-        </div>
-    </div>`;
-});
-
 //RÉCUPÉRER / BOUCLE CALCUL PRIX TOTAL PANIER
 function totalPanier(teddy){ 
     for(let i = 0; i < teddy.quantite; i++){
         addPanierId.push(teddy._id);   
     }
-    };
+};
+
+//BOUCLE AFFICHAGE
+teddies.forEach((teddy,i) =>{
+    container.innerHTML +=
+    `<div class="item-panier">
+        <div class="panier_uno">
+            <div class="panier_photo">
+                <img src=${teddy.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
+            </div>
+            <div class="panier_description">
+                <div class="texte_description-panier">
+                    <p class="teddy-nom">${teddy.name}</p>
+                    <p class="teddy-quantity">Quantité : ${teddy.quantity}</p>
+                    <p class="teddy-total"> :Prix Total : ${teddy.quantite * teddy.price / 100} €</p>
+                    <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
+                </div>
+            </div>
+        </div>
+    </div>`;
+});
 
 //SUPPRIMER ITEM / ÉCOUTER L'EVENT
 function deleteItem(_id){

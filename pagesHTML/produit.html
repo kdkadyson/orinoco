@@ -6,61 +6,91 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="Oribear, création d'ours en peluche faits à la main par des spécialistes et des passionnés de la confection artisanale d'ours en peluche, avec un savoir-faire trés apprécié des connaisseurs et des amateurs de techniques anciennes jumélées à la technologie d'aujourd'hui! Oribear est une filiale de l'entreprise de commerce en ligne Orinoco"/>
         <link rel="stylesheet" href="../public/css/style.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet"/>
+        <link  href="../fontawesome  /css/all.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <title> Oribear - Description du Produit </title>
     </head>
 
     <body>
     <!--HEADER-->
-    <header>
-        <img class="logo" src="../img /logo.png" alt="Image du logo Orinico création d'ours en peluche faits à la main" />
-        <nav>
-            <ul>
-                <li><a href="home.html"> Accueil </a></li>
-                <li><a href=""> Mes Commandes </a></li>
-                <li><a href="panier.html" id=""> Panier <i class="fas fa-shopping-cart"></i></a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <!--SECTION BANNIÈRE-->
-    <div class="banniere">
-        <img src="../img /banniere.png" alt="Photo de manufacture de créaation d'ours en peluche faits à la main"/>
-        <div class="banniere_text">
-            <h1> Oribear </h1>
-  >         <p> Personnalisez vos Articles ! </p>
-        </div>
-    </div>
+        <header>
+            <img src="../img /logo.png" alt="Image du logo Orinico création d'ours en peluche faits à la main" class="logo"/>
+            <nav>
+                <ul>
+                    <li><a href="index.html"> Accueil </a></li>
+                    <li><a href="panier.html" class="panier_marge"> Mon Panier<i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+            </nav>
+        </header>
 
-     <!--SECTION MAIN-->
-     <main>
+        <!--DIV DE SÉPARATION-->
+        <div class="split"></div>
+        
+        <!--SECTION BANNIÈRE-->
+        <div class="banniere">
+            <img src="../img /banniere.png" alt="Photo de manufacture de créaation d'ours en peluche faits à la main" class="img">
+            <div class="banniere_text">
+                <h1 class="banniere-load"> Oribear </h1>
+                <h2 class="banniere-load2"> création d'ours en peluche faits à la main <br/>
+                    par des spécialistes et passionnés de la confection artisanale. 
+                </h2>
+            </div>
+        </div>
+
+     <!--SECTION MAIN-->    
         <section id="containerProduit">
-            
+            <h1 class="titre">Optimiez votre choix ! :</h1><br/>
+            <p class="sous_titre">Oribear vous propose ici de choisir la couleur que vous désirez, parmi un choix de couleurs proposés. </p>
+            <div class="photo-produit">
+                <div class="produits_img">
+                    <img src=${teddy.imageUrl} alt="Photo de l'article choisi d'ours en peluches" class="image"/>
+                </div>
+                <div class="produit_description">
+                    <div class="texte_description-produit">
+                        <p class="teddy-nom"> ${teddy.name} </p>
+                        <p class="ted-id"> ${teddy._id} </p>
+                        <p class=" teddy-des"> ${teddy.description} </p>
+                        <p class="teddy-prix"> ${teddy.price / 100}€ </p>
+                        <div id="choixQuantite">
+                            <select id="teddyChoix" class="teddy-choix">
+                                <option>Choix des couleurs</option>
+                            </select>
+                            <select id="teddyQuantity" class="teddy-quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <p  id="teddyPrixTotal" class="teddy-prixtotal"> ${teddy.pricetotal / 100}€ </p>
+                        </div>
+                            <a href="../pagesHTML/panier.html"><button type="submit"id="panier" data-id="${teddy._id}" value="submit">Ajouter au panier</button></a>
+                    </div>
+                </div>
+            </div> 
         </section>
-    </main>
       
     <!--FOOTER-->
     <footer>
         <div> 
-            <h2> À Propos </h2>
+            <h2 class=" marge"> À Propos ... </h2>
                 <a href="#"><p> Orinoco / Oribear </p></a>
                 <a href="#"><p> Conditions Générales de Vente </p>
                 <a href="#"><p> Données et Confidentialité </p>
                 <a href="#"><p> Charte Qualité </p>
         </div>
-
         <div> 
-            <h2> Besoin d'Assistance ? </h2>
+            <h2 class=" marge"> Besoin d'Assistance ? </h2>
             <a href="#"><p> FAQ </p></a>
             <a href="#"><p> Retours / Remboursements </p>
             <a href="mailto:oribear@gmail.com"><p> Nous Contacter </p></a>
         </div>
-
         <div> 
-            <h2> Suivez-Nous </h2>
-                <a href="#"> <p> Facebook </p></a>
-                <a href="#"><p> Twitter </p></a>
-                <a href="#"><p> Instagram </p></a>
+            <h2> Suivez-Nous ! </h2>
+                <a href="#"><i class="fab fa-facebook-f"></i></p></a>
+                <a href="#"><i class="fab fa-twitter"></i></p></a>
+                <a href="#"><i class="fab fa-instagram"></i></p></a>
         </div>
     </footer>
     

@@ -1,31 +1,62 @@
         /* PAGE 3 PANIER*/
 
-#form{
-    margin-top: 50px;
-    margin-bottom: 50px;
-    border: 3px solid rgba(80, 43, 226, 0.777);
-    width: 600px;
-    height: 800px;
-    text-align: center;
+.form{
+    visibility: hidden;
+    height: inherit;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: 380px;
+    position: absolute;
+    text-align: center;
+    background: rgba(80, 43, 226, 0.777);
+    width: 70%;
+    height: 100%;
+    border: 5px solid rgba(221, 160, 221, 0.989);
+    border-radius: 20px 20px;    
+} 
+.form:target{
+    visibility: visible;
+    opacity: 0.9;
 }
-input #nom{
+.form_close{
+    position: absolute;
+    color: #000;
+    bottom: 0;
+    right: 25px;
+    bottom: 10x;
+    transition: .3s;
+    text-decoration: none;
     color: red;
+    font-size: 60px;
+    font-weight: 900;
+}
+fieldset{
+    top: 90%;//changer
+    right: 219px;
+}
+legend{
+    font-size: 40px;
+    font-weight: 800;
+    font-style: oblique;    
+    color: #000;
+    text-shadow: 2px 2px 1px #000;
+    margin-bottom: 30px;
 }
 label{
     font-weight: 900;
-    font-size: 20px;
+    font-size: 25px;
+    color: #fff;
 }
-.box_size input{
-    width: 230px;
+.label-marge{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.box_size2 input{
+    width: 300px;
     height: 40px;
-    border: 3px solid rgba(80, 43, 226, 0.777);
+    border: 3px solid rgba(221, 160, 221, 0.989);;
     border-radius: 10px 10px;
-    font-weight: bold;
     font-size: 20px;
-    color: #000;
+    color:#000;
 }
 

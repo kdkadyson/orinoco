@@ -5,9 +5,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="Oribear, création d'ours en peluche faits à la main par des spécialistes et des passionnés de la confection artisanale d'ours en peluche, avec un savoir-faire trés apprécié des connaisseurs et des amateurs de techniques anciennes jumélées à la technologie d'aujourd'hui! Oribear est une filiale de l'entreprise de commerce en ligne Orinoco"/>
-        <link rel="stylesheet" href="styles.css"/>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
-        <link  href="fontawesome /css/all.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="../public/css/style.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet"/>
+        <link  href="../fontawesome  /css/all.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <title> Oribear </title>
     </head>
@@ -18,12 +18,8 @@
             <img src="../img /logo.png" alt="Image du logo Orinico création d'ours en peluche faits à la main" class="logo"/>
             <nav>
                 <ul>
-                    <li>
-                        <a href="index.html"> Accueil </a>
-                    </li>
-                    <li>
-                        <a href="panier.html" class="panier_marge"> Mon Panier<i class="fas fa-shopping-cart"></i></a>
-                    </li>
+                    <li><a href="index.html"> Accueil </a></li>
+                    <li><a href="panier.html" class="panier_marge"> Mon Panier<i class="fas fa-shopping-cart"></i></a></li>
                 </ul>
             </nav>
         </header>
@@ -33,7 +29,7 @@
         
         <!--SECTION BANNIÈRE-->
         <div class="banniere">
-            <img src="../img /banniere.png" alt="Photo de manufacture de créaation d'ours en peluche faits à la main" class="image">
+            <img src="../img /banniere.png" alt="Photo de manufacture de créaation d'ours en peluche faits à la main" class="img">
             <div class="banniere_text">
                 <h1 class="banniere-load"> Oribear </h1>
                 <h2 class="banniere-load2"> création d'ours en peluche faits à la main <br/>
@@ -43,27 +39,11 @@
         </div>
 
         <!--SECTION MAIN--> 
-        <main>
             <section id="container">
-                <h1 class="titre">Nos sélections du moment :</h1>
+                <h1 class="titre">Nos sélections du moment :</h1><br/>
                 <p class="sous_titre">Oribear vous propose ici sa collection originale, sélectionnée parmi des confectionneurs de qualité.<br/>
                     Les connaisseurs ainsi que les amateurs apprécieront !</p>
-                <div id="produitsEtPhotos">
-                    <div class="produits_img">
-                        <img src=${teddy.imageUrl} alt="Photo d'article d'ours en peluches"/>
-                    </div> 
-                    <div class="produits_descriptions">
-                        <div class="texte_description">
-                            <p> ${teddy.name} </p>
-                            <p> ${teddy._id} </p>
-                            <p> ${teddy.description} </p>
-                            <p> ${teddy.price / 100}€ </p>
-                            <a href="produit.html"><input type="button" value="Voir l'article" class="" id="voirArticle">
-                        </div>
-                    </div>
-                </div>
             </section>
-        </main>
           
     <!--FOOTER-->
     <footer>
