@@ -3,47 +3,62 @@ header{
     justify-content: space-between;
     padding: 0 2rem 2rem 2rem;
     align-items: baseline;
-    background-color: #F3E9F1;
-}
-.logo{
-    width: 25rem;
-    margin-top: 20px;
-    margin-bottom: 20px;
-} 
-nav{
-    justify-content: flex-end;   
-}
-ul{
-    display: flex;
-    list-style-type: none;   
-}
-ul li{
-    padding-right: 40px;
-    padding-top: 15px;
-    border: 1px solid#F3E9F1 ;
-    border-radius: 20px 20px;
-    height: 40px;
-    color: #000;
-}
-ul li:hover{
-    border: 1px solid #F3E9F1;
-    border-radius: 20px;
-    background-color: #ffffff90;
-    height: 40px;
-    
-}
-li a{
-    font-size: 25px;
-    font-weight: 600;
-    padding-left: 30px;
-    color: #000;
-
-}
-.panier_marge{
-    padding-left: 40px;
-    color: #000;
-}
-.fas{
-    color: rgba(0, 0, 0, 0.537);
-    padding-left: 10px;
+    background-color: $colour-fond;
+    @include responsive (tablet){
+        @include flex(column, center);
+    }
+    @include responsive (mobile){
+        @include flex(column, center);
+    }
+    .logo{
+        width: 25rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    } 
+    nav{
+        justify-content: flex-end;   
+    }
+    ul{
+        display: flex;
+        list-style-type: none;
+        @include responsive (tablet){
+            @include flex(row, center);
+            align-items: center;
+            width: 100%;
+            margin-left: 90px;
+        }
+        @include responsive (mobile){
+            @include flex(row, center);
+            align-items: center;
+            width: 100%;
+            flex-wrap: nowrap;
+            margin-left: 28px;
+        }  
+        li{
+        padding-right: 40px;
+        padding-top: 15px;
+        border-radius: 20px 20px;
+        height: 40px;
+        color: $colour-black;
+        &:hover{
+        border-radius: 20px;
+        background-color: #ffffff90;
+        height: 40px;
+        }    
+        }
+        a{
+        font-size: 25px;
+        @include font-weight(600);
+        padding-left: 30px;
+        color: $colour-black;
+        }
+    }
+    .panier_marge{
+        padding-left: 40px;
+        color: $colour-black;
+    }
+    .fas{
+        color: rgba(0, 0, 0, 0.537);
+        padding-left: 10px;
+    }
 }

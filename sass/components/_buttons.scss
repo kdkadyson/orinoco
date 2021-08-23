@@ -8,17 +8,17 @@
     margin-top: 20px;
     margin-bottom: 30px;
     cursor: pointer;
-    background-color: rgba(205, 134, 63, 0.927);
-    color: #fff;
-    border: 3px solid #fff;  
+    background-color: $colour-primary;
+    color: $colour-white;
+    border: 3px solid $colour-white;  
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .voir-article:hover{
     width: 150px;
     height: 50px;
-    background-color: #fff;
-    color: rgba(205, 134, 63, 0.927);
-    border: 1px solid #fff;
+    background-color: $colour-white;
+    color: $colour-primary;
+    border: 1px solid $colour-white;
     border-radius: 20px 20px;
     font-size: 20px;
 }
@@ -28,22 +28,22 @@
 button{
     width: 150px;
     height: 40px;
-    border-radius: 15px 15px;
     align-self: center;
     margin-top: 20px;
     margin-bottom: 30px;
     cursor: pointer;
-    background-color: rgba(205, 134, 63, 0.927);
-    color: #fff;
+    background-color: $colour-primary;
+    color: $colour-white;
     font-size: 18px;
-    border: 3px solid #fff;  
+    border: 3px solid $colour-white; 
+    border-radius: 15px 15px; 
 }
 button:hover{
-    background-color: #fff;
-    color: rgba(205, 134, 63, 0.927);
+    background-color: $colour-white;
+    color: $colour-primary;
     width: 190px;
     height: 50px;
-    font-weight: bold;
+    @include font-weight;
     font-size: 20px;
 }
             //BOUTON PAGE PANIER
@@ -61,33 +61,37 @@ button:hover{
 
 // BOUTON Valider Panier 
 #validerPanier{
+    @include responsive(mobile){
+        margin-right: 350px;
+        margin-top: 80px;
+    }
     width: 220px;
     height: 30px;
-    border: 3px solid rgba(205, 134, 63, 0.77);
+    border: 3px solid $colour-primary;
     border-radius: 50px 50px;
     cursor: pointer;
     text-align: center;
-    color: red;
-    background-color: rgba(205, 134, 63, 0.77);
-    color: #000;
+    background-color: $colour-primary ;
+    color: $colour-black;
     margin-top: 40px;
     margin-left: 350px;
     padding-top: 10px;
     font-size: 20px;
-    font-weight: bold;
+    @include font-weight;
     font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 #validerPanier:hover{
     width: 260px;
     height: 40px;
-    background-color: #fff;
+    background-color: $colour-white;
     font-size: 22px;
-    font-weight: bolder;
+    @include font-weight(bolder);
     padding-top: 15px;
-    color: rgba(205, 134, 63, 0.927);
+    color: $colour-primary;
 }
 .bouton_panier{
-    color: #000;
+    color: $colour-black;
 }
 
             //FORMULAIRE
@@ -96,15 +100,15 @@ button:hover{
 #formSend{
     width: 200px;
     height: 50px;
-    border: 3px solid #fff;
+    border: 3px solid $colour-white;
     border-radius: 50px 50px;
     cursor: pointer;
     text-align: center;
     font-size: 20px;
-    font-weight: bold;
+    @include font-weight;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #fff;
-    background-color: rgba(205, 134, 63, 0.77);
+    color: $colour-white;
+    background-color: $colour-primary ;
     align-self: center;
     margin-top: 50px;
     margin-bottom: 40px;
@@ -112,11 +116,11 @@ button:hover{
 #formSend:hover{
     width: 240px;
     height: 60px;
-    background-color: #fff;
+    background-color: $colour-white;
     font-size: 22px;
-    font-weight: bolder;
-    color: rgba(205, 134, 63, 0.77);
+    @include font-weight(bolder);
+    color: $colour-primary;
 }
 .form_send input:hover{
-    color: rgba(205, 134, 63, 0.77);
+    color:$colour-primary;
 }

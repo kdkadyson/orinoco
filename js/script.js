@@ -5,7 +5,7 @@ fetch("http://localhost:3000/api/teddies")
     for(const product of listTeddyItem){ 
         const teddy = new Teddies(product);  
         document.getElementById("container").innerHTML += 
-            `<div id="produitsEtPhotos">
+            `<div id="produitsEtPhotos" class="produits-photos">
                 <div class="produits_img">
                     <img src=${teddy.imageUrl} alt="Photo d'article d'ours en peluches"class="images"/>
                 </div> 

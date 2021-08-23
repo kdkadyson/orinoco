@@ -1,7 +1,7 @@
 
 
 .split{
-    border-bottom: 4px solid rgba(221, 160, 221, 0.989);  
+    border-bottom: 4px solid $colour-secondary;  
 }
    // BANNIÈRE 
 
@@ -10,425 +10,556 @@
     justify-content: center;
     align-items: center;
     padding-left: 60px;
-    background-color: #F3E9F1
-}
-.img{
-    margin-right: 55px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 25rem;
-    width: 100rem;
-}
-.banniere_text{
-    width: inherit;
-    position: absolute;
-    font-weight: bold;
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-.banniere h1{
-    font-size: 70px;
-    font-weight: 800;
-    margin-top: 100px;
-    color: #fff;
-}
-.banniere h2{
-    font-size: 40px;
-    font-weight: 600; 
-    color: #000;
-}
-.banniere-load{
-    animation: name-load 1s ease-in-out forwards;
-    transform: scale(0);
-}
-.banniere-load2{
-    animation: name-load 1s ease-in-out 800ms forwards;
-    transform: scale(0);
-}
-@keyframes name-load{
-    0%{
-        transform: translate(-100%);
+    background-color: $colour-fond;
+    .img{
+        margin-right: 55px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 25rem;
+        width: 100rem;
+        @include responsive(tablet){
+            width: 48rem;
+            height: 20rem;
+            margin-right: 60px;
+        }
+        @include responsive(mobile){
+            width: 36rem;
+            height: 15rem;
+            margin-right: 63.5px;
+        }
     }
-    100%{
-        transform: translate(0);
+    .banniere_text{
+        width: inherit;
+        position: absolute;
+        @include font-weight;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        @include responsive(tablet){
+            margin-right: 60px;
+            }
+        @include responsive(mobile){
+            margin-right: 70px;
+        }
+        h1{
+            font-size: 70px;
+            @include font-weight(800); 
+            margin-top: 100px;
+            color: $colour-white;
+            @include responsive(tablet){
+                font-size: 50px;
+            }
+            @include responsive(mobile){
+                font-size: 45px;
+            }
+        }
+        h2{
+            font-size: 40px;
+            @include font-weight(600); 
+            color: $colour-black;
+            @include responsive(tablet){
+                font-size: 30px;
+            }
+            @include responsive(mobile){
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .banniere-load{
+        animation: name-load 1s ease-in-out forwards;
+        transform: scale(0);
+    }
+    .banniere-load2{
+        animation: name-load 1s ease-in-out 800ms forwards;
+        transform: scale(0);
+        @keyframes name-load{
+            0%{
+                transform: translate(-100%);
+            }
+            100%{
+                transform: translate(0);
+            }
+        }
     }
 }
 
     // HOME PAGE 
 
-#container{
-    background-color: #F3E9F1;
-    border-top: 4px solid rgba(221, 160, 221, 0.989); 
-    border-bottom: 4px solid rgba(221, 160, 221, 0.989);  
-}
-.titre{
-    margin-top: 80px;
-    font-weight: 600;
-    font-size: 35px; 
-    color: #000;   
-}
-.sous_titre{
-    font-weight: 400;
-    font-size: 25px;
-    color: #000;
-    padding-bottom: 80px;
-}
-
-#produitsEtPhotos{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 80px;
-    margin-bottom: 80px;
-}
-.produits_img{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-.images{
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    border: 3px solid rgba(80, 43, 226, 0.777);
-    border-radius: 15px 15px;
-}
-.images:hover{
-    width: 450px;
-    height: 450px; 
-}
-.produits_descriptions{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.texte_description{
-    width: 500px;
-    height: 450px;
-    font-weight: bold;
-    background-color: rgba(205, 134, 63, 0.77);
-    border-radius: 15px 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+.container{
+    background-color: $colour-fond;
+    @include border;  
+    .titre{
+        margin-top: 80px;
+        @include font-weight(600);
+        font-size: 35px; 
+        color: $colour-black;
+        @include responsive(tablet){
+            font-size: 30px;
+        }  
     }
-.texte_description p{
-    padding-top: 30px;
-    font-style: oblique;
-    font-weight: bold;
-    color: #fff;
-} 
-.teddy-nom{
-    font-weight: bolder;
-    font-size: 40px;
-    font-family: fantasy;
-}
-.ted-id {
-    border-bottom: 1px solid rgba(221, 160, 221, 0.989);  
-}
-.teddy-des{
-    font-weight: bolder;
-    font-size: 25px;
-    font-family: fantasy;
-}
-.teddy-prix{
-    font-weight: bold;
-    font-size: 30px;
+        .sous_titre{
+            @include font-weight(400);
+            font-size: 25px;
+            color: $colour-black;
+            padding-bottom: 80px;
+            @include responsive(tablet){
+                font-size: 20px;
+            }  
+        }
+    .produits-photos{
+        @include flex(row, space-between);
+        margin-top: 80px;
+        margin-bottom: 80px;
+        @include responsive(tablet){
+            align-items: center;
+            margin-top: 30px;
+        }
+        @include responsive(mobile){
+            @include flex(column, space-around);
+            margin-top: 30px;
+            align-items: center;
+        }
+    }
+        .produits_img{
+            width: 50%;
+            @include flex(column, space-around);
+            align-items: center;
+        }
+        .images{
+            @include responsive(tablet){
+                width: 300px;
+                height: 350px;
+                object-fit: cover;
+            }
+            @include responsive(mobile){
+                width: 350px;
+                height: 300px;
+                object-fit: cover;
+                margin-bottom: 10px;
+            }
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border: 3px solid $colour-tertiary;
+            border-radius: 15px 15px;
+            &:hover{
+                width: 450px;
+                height: 450px; 
+            }
+        }
+    .produits_descriptions{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+        .texte_description{
+            width: 500px;
+            @include font-weight; 
+            background-color: $colour-primary;
+            border-radius: 15px 15px;
+            @include flex(column, space-evenly);
+            align-items: center;
+            @include responsive(tablet){
+                width: 350px;
+            }
+            @include responsive(mobile){
+                width: 450px;
+                margin-bottom: 20px;
+            }
+            }
+        .texte_description p{
+            padding-top: 30px;
+            font-style: oblique;
+            @include font-weight;
+            color: $colour-white;
+            @include responsive(tablet){
+                
+            }
+            
+        } 
+            .teddy-nom{
+                @include font-weight(bolder);
+                font-size: 40px;
+                font-family: fantasy;
+                @include responsive(mobile){
+                    font-size: 35px
+                }
+            }
+            .ted-id {
+                border-bottom: 1px solid $colour-secondary;
+                @include responsive(tablet){
+
+                }
+                @include responsive(mobile){
+                    font-size: 20px;
+                    
+                }  
+            }
+            .teddy-des{
+                @include font-weight(bolder);
+                font-size: 25px;
+                font-family: fantasy;
+                @include responsive(tablet){
+
+                }
+                @include responsive(mobile){
+                    font-size: 20px;
+                    
+                }
+            }
+            .teddy-prix{
+                @include font-weight;
+                font-size: 30px;
+            }
 }
 
     // PAGE 2 PRODUIT 
 
-#containerProduit{
-    border-top: 4px solid rgba(221, 160, 221, 0.989);
-    border-bottom: 4px solid rgba(221, 160, 221, 0.989); 
-}
-.photo-produit{
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 80px;
-    margin-bottom: 80px;
-}
-.produit_img{  
-    width: 50%;
-    height: 550px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: produit-load 1s ease-in-out 500ms forwards;
-    transform: scale(0);
-}
-.image{
-    width: 550px;
-    height: 550px;
-    object-fit: cover;
-    border: 3px solid rgba(80, 43, 226, 0.777);
-    border-radius: 30px 30px;
-    animation: produit-load 1s ease-in-out 500ms forwards;
-    transform: scale(0);
-}
-.image:hover{
-    width: 650px;
-    height: 650px;
-}
-.produit_description{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    animation: produit-load 1s ease-in-out 1s forwards;
-    transform: scale(0);
-}
-.texte_description-produit{
-    width: 600px;
-    height: 550px;
-    font-weight: bold;
-    background-color: rgba(205, 134, 63, 0.77);
-    border-radius: 30px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
-.produit_description p{
-    font-style: oblique;
-    font-weight: bold;
-    color: #fff;
-}
-.teddy-nom{
-    font-weight: bolder;
-    font-size: 40px;
-    font-family: fantasy;
-}
-.ted-id {
-    border-bottom: 1px solid rgba(221, 160, 221, 0.989);  
-}
-.teddy-des{
-    font-weight: bolder;
-    font-size: 25px;
-    font-family: fantasy;
-}
-.teddy-prix{
-    font-weight: bold;
-    font-size: 30px;
-}
-#choixQuantite{
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-.teddy-choix{
-    width: 190px;
-    height: 40px;
-    border-radius: 15px 15px;
-    align-self: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    cursor: pointer;
-    background-color: #fff;
-    color: #000;
-    font-size: 18px; 
-}
-#teddyQuantity{
-    width: 50px;
-    height: 40px;
-    border-radius: 15px 15px;
-    align-self: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    cursor: pointer;
-    background-color: #fff;
-    color: #000;
-    font-size: 18px;
-}
-.teddy-prixtotal{
-    font-weight: bold;
-    font-size: 30px;
-}
-@keyframes produit-load{
-    0%{
+.container-produit{
+    @include border; 
+    .titre{
+        margin-top: 80px;
+        @include font-weight(600);
+        font-size: 35px; 
+        color: $colour-black;   
+    }
+        .sous_titre{
+            @include font-weight(400);
+            font-size: 25px;
+            color: $colour-black;
+            padding-bottom: 80px;
+        }
+    .photo-produit{
+        height: 600px;
+        @include flex(row, center);
+        align-items: center;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        @include responsive(tablet){
+            @include flex(column, space-evenly);
+        }
+        @include responsive(mobile){
+            @include flex(column, space-evenly);
+            
+        }
+    }
+    .produit_img{  
+        width: 50%;
+        height: 550px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: produit-load 1s ease-in-out 500ms forwards;
         transform: scale(0);
     }
-    100%{
-        transform: scale(1);
+        .image{
+            @include responsive(tablet){
+                width: 450px;
+                height: 450px;
+            }
+            @include responsive(mobile){
+                width: 350px;
+                height: 350px;
+            }
+            width: 550px;
+            height: 550px;
+            object-fit: cover;
+            border: 3px solid $colour-tertiary;
+            border-radius: 30px 30px;
+            animation: produit-load 1s ease-in-out 500ms forwards;
+            transform: scale(0);
+            &:hover{
+            width: 650px;
+            height: 650px;
+            }
+        }
+    .produit_description{
+        width: 50%;
+        @include flex(column, space-around);
+        align-items: center;
+        animation: produit-load 1s ease-in-out 1s forwards;
+        transform: scale(0);
     }
+        .texte_description-produit{
+            @include responsive(tablet){
+                width: 500px;
+                height: 400px
+            }
+            @include responsive(mobile){
+                width: 480px;
+                height: 400px;
+            }
+            width: 600px;
+            height: 550px;
+            @include font-weight;
+            background-color: $colour-primary;
+            border-radius: 30px 30px;
+            @include flex(column, space-evenly);
+            align-items: center;
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+        .produit_description p{
+            font-style: oblique;
+            @include font-weight;
+            color: $colour-white;
+        }
+            .teddy-nom{
+                @include font-weight(bolder);
+                font-size: 40px;
+                font-family: fantasy;
+                @include responsive(tablet){
+                }
+                @include responsive(mobile){
+                    font-size: 35px
+                }
+            }
+            .teddy-des{
+                @include font-weight(bolder);
+                font-size: 25px;
+                font-family: fantasy;
+                @include responsive(tablet){
+                }
+                @include responsive(mobile){
+                    font-size: 25px
+                }
+            }
+            .teddy-prix{
+                @include font-weight;
+                font-size: 30px;
+            }
+            .choix-quantity{
+                margin-top: 40px;
+                margin-bottom: 20px;
+            }
+            .teddy-choix{
+                width: 190px;
+                height: 40px;
+                border-radius: 15px 15px;
+                align-self: center;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                cursor: pointer;
+                background-color: $colour-white;
+                color: #000;
+                font-size: 18px; 
+            }
+            .teddy-quantity{
+                width: 50px;
+                height: 40px;
+                border-radius: 15px 15px;
+                align-self: center;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                cursor: pointer;
+                background-color: $colour-white;
+                color: #000;
+                font-size: 18px;
+            }
+            .teddy-prixtotal{
+                @include font-weight;
+                font-size: 30px;
+            }
+            @keyframes produit-load{
+                0%{
+                    transform: scale(0);
+                }
+                100%{
+                    transform: scale(1);
+                }
+            }
 }
 
     // PAGE 3 PANIER 
 
 main{
-    display: flex;
-    flex-direction: column;
-    border-bottom: 4px solid rgba(221, 160, 221, 0.989);
-    border-top: 4px solid rgba(221, 160, 221, 0.989);
+    @include border;
+    .panier-vide{
+        height: 400px;//oter
+        @include font-weight(600);
+        font-size: 35px; 
+        font-style: oblique;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 4px solid $colour-secondary;//oter 
+        .fas{
+            color: $colour-black;
+        }
+    }
+    h1{
+        margin-bottom: 80px;
+        margin-top: 80px;
+        @include font-weight(600);
+        font-size: 35px; 
+        color: $colour-black;
+    }
+    .item-panier{
+        @include flex(row, center);
+        flex-wrap: wrap;
+        margin-right: 30px;
+    }
+        .panier_uno{
+            width: 200px;
+            margin-right: 60px;
+            margin-left: 60px;
+            @include responsive(mobile){
+               @include flex(row, center);
+            }
+        }
+        .panier_img{
+            width: 250px;
+            height: 250px;
+            border: 3px solid $colour-tertiary;
+            border-radius: 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include responsive(mobile){
+                width: 200px;
+                height: 200px;
+            } 
+        }
+        .panier_description{
+            @include flex(column, center);
+            margin-left: 50px;
+            margin-top: 20px;
+            margin-bottom: 80px;
+        }
+        .texte_description-panier{
+            font-style: oblique;
+            @include font-weight;
+            color: $colour-black;
+        }
+        .teddy-nom{
+            @include font-weight(bolder);
+            font-size: 25px;
+            font-family: fantasy;
+        }
+        .teddy-quantity{
+            @include font-weight(bolder);
+            font-size: 20px;
+        }
+        .teddy-total{
+            @include font-weight(bolder);
+            font-size: 20px;
+        }
+        .prix_valider{
+            @include flex(row, center);
+            align-items: center;
+            margin-bottom: 50px;
+            margin-top: 50px;
+            @include responsive(mobile){
+                @include flex(column, center);
+            }
+        }
+        #prixPanier p{
+            padding-top: 35px;
+            font-size: 25px;
+            @include font-weight;
+            text-align: center;
+            @include responsive(mobile){
+                margin-right: 330px;
+            }
+        }
 }
-#panierVide{
-    height: 400px;//oter
-    font-weight: 600;
-    font-size: 35px; 
-    font-style: oblique;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 4px solid rgba(221, 160, 221, 0.989);//oter 
-}
-#panierVide .fas{
-    color: #000;
-}
-#containerPanier h1{
-    margin-bottom: 80px;
-    margin-top: 80px;
-    font-weight: 600;
-    font-size: 35px; 
-    color: #000;
-}
-.item-panier{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-right: 30px;
-    
-}
-.panier_uno{
-    width: 200px;
-    margin-right: 60px;
-    margin-left: 60px;
-}
-.panier_img{
-    width: 250px;
-    height: 250px;
-    border: 3px solid rgba(80, 43, 226, 0.777);
-    border-radius: 10px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.panier_description{
-    display: flex;
-    justify-content: center;
-    margin-left: 50px;
-    margin-top: 20px;
-    margin-bottom: 80px;
-}
-.texte_description-panier{
-    font-style: oblique;
-    font-weight: bold;
-    color: #000;
-}
-.teddy-nom{
-    font-weight: bolder;
-    font-size: 25px;
-    font-family: fantasy;
-}
-.teddy-quantity{
-    font-weight: bolder;
-    font-size: 20px;
-}
-.teddy-total{
-    font-weight: bolder;
-    font-size: 20px;
-}
-.prix_valider{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-    margin-top: 50px;
-}
-#prixPanier p{
-    padding-top: 35px;
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-}
-
     // PAGE 4 CONFIRMATION 
     
 .confirmation{
+    height: 450px;
     font-size: 30px;
-    display: flex;
-    justify-content: center;
+    @include flex(column, center); 
     align-items: center;
     padding-top: 80px;
     padding-bottom: 80px;
-    border-top: 4px solid rgba(221, 160, 221, 0.989);
-    border-bottom: 4px solid rgba(221, 160, 221, 0.989);
-}
-.confirmation p{
-    width: 700px;
-    font-size: 30px;
-    font-weight: bold;
-    border-bottom: 3px solid rgba(80, 43, 226, 0.777);
-}
-#remerciement{
-    border-left: 3px solid rgba(205, 134, 63, 0.77);
-    border-right: 3px solid rgba(205, 134, 63, 0.77);
-    padding-left: 30px;
-    padding-right: 30px;
-}
-.confirmation_id{
-    margin-top: 90px;
-}
-.loader{
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #000;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    animation: confirm-loader 5s both;
-}
-@keyframes confirm-loader{
-    100%{
-        opacity: 0;
-        z-index: -10;
+    @include border;
+    .confirmation__resume{ 
+        @include responsive(tablet){
+            font-size: 25px;
+        }
+        @include responsive(mobile){
+            font-size: 25px;
+        }    
+    }
+    .remerciement{
+        border-left: 3px solid $colour-primary;
+        border-right: 3px solid $colour-primary;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .confirmation_id{
+        width: 700px;
+        margin-top: 90px;
+        @include font-weight;
+        border-bottom: 3px solid $colour-tertiary;
+        margin-left: 70px;
+        @include responsive(tablet){
+            font-size: 30px;
+            margin-right: 75px;
+        }
+        @include responsive(mobile){
+            font-size: 25px;
+            width: 400px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            margin-right: 75px;
+        }
     }
 }
-.loader .fas{
-    color: rgba(205, 134, 63, 0.77);
-    font-size: 100px;
-    animation: flash 1.5s ease-in-out both infinite;
-}
-@keyframes flash{
-    0%{
-        color: rgba(205, 134, 63, 0.77); 
+//LOADER CONFIRMATION
+    .loader{
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #000;
+        opacity: 1;
+        @include flex(column, center);
+        align-content: center;
+        animation: confirm-loader 5s both;
     }
-    50%{
-        color: rgba(221, 160, 221, 0.989);
+    @keyframes confirm-loader{
+        100%{
+            opacity: 0;
+            z-index: -10;
+        }
     }
-    100%{
-        color: rgba(80, 43, 226, 0.777); 
+    .loader .fas{
+        color: $colour-primary;
+        font-size: 100px;
+        animation: flash 1.5s ease-in-out both infinite;
     }
-}
-.loader .fas:nth-child(1){
-    animation-delay: 0.2s;
-    
-}
-.loader .fas:nth-child(2){
-    animation-delay: 0.4s;
-}
-.loader .fas:nth-child(3){
-    animation-delay: 0.6s;
-}
-.icon{
-    padding-left: 50px;
-}
-.loader p{
-    color: #fff;
-    font-weight: 900;
-    font-size: 70px;
-    margin-left: 80px;
-}
+    @keyframes flash{
+        0%{
+            color: $colour-primary; 
+        }
+        50%{
+            color: $colour-secondary;
+        }
+        100%{
+            color: $colour-tertiary; 
+        }
+    }
+    .loader .fas:nth-child(1){
+        animation-delay: 0.2s;
+        
+    }
+    .loader .fas:nth-child(2){
+        animation-delay: 0.4s;
+    }
+    .loader .fas:nth-child(3){
+        animation-delay: 0.6s;
+    }
+    .icon{
+        padding-left: 50px;
+    }
+    .loader p{
+        color: $colour-white;
+        @include font-weight(900);
+        font-size: 70px;
+        margin-left: 80px;
+    }
+

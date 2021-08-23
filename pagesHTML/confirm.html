@@ -18,7 +18,7 @@
             <img src="../img /logo.png" alt="Image du logo Orinico création d'ours en peluche faits à la main" class="logo"/>
             <nav>
                 <ul>
-                    <li><a href="index.html"> Accueil </a></li>
+                    <li><a href="home.html"> Accueil </a></li>
                     <li><a href="panier.html" class="panier_marge"> Mon Panier<i class="fas fa-shopping-cart"></i></a></li>
                 </ul>
             </nav>
@@ -42,7 +42,7 @@
     <!--SECTION MAIN-->
     <section class="confirmation">
 		<div class="confirmation__resume">
-			<h2 id="remerciement"> Votre commande à bien été enregistrée.<br/>
+			<h2 id="remerciement" class="remerciement"> Votre commande à bien été enregistrée.<br/>
                 ${Mme/Mr} ${client.name}<br/>
                 Nous vous remercions pour votre achat <span id="lastName"></span> !</h2>
 			<div class="confirmation_id">
@@ -73,7 +73,18 @@
                 <a href="#"><i class="fab fa-instagram"></i></p></a>
         </div>
     </footer>
-   
+
+   <!--LOADER-->
+   <div class="loader">
+        <div>
+            <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+            <span class="icon"><i class="fas fa-shopping-cart" ></i></span>
+            <span class="icon"><i class="fas fa-shopping-cart"></i></span> 
+        </div>
+        <div>
+            <p>LOADING  RECEIPT ...</p>
+        </div>
+    </div>
     
     <!--JavaScript-->  
     <script src="../js/confirm.js"></script>

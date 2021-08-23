@@ -18,7 +18,7 @@
         <img src="../img /logo.png" alt="Image du logo Orinico création d'ours en peluche faits à la main" class="logo"/>
         <nav>
             <ul>
-                <li><a href="index.html"> Accueil </a></li>
+                <li><a href="home.html"> Accueil </a></li>
                 <li><a href="panier.html" class="panier_marge"> Mon Panier<i class="fas fa-shopping-cart"></i></a></li>
             </ul>
         </nav>
@@ -40,7 +40,7 @@
 
     <!--SECTION MAIN-->
     <main>
-        <section id="panierVide">
+        <section id="panierVide" class="panier-vide">
             <p><i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
                 Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i></p>
         </section>
@@ -116,7 +116,7 @@
                 <input type="email" id="email" name="email" required name="required" placeholder="ex:  oribear@gmail.fr"
                     pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}"/>
             </div>                                 
-            <input type="submit" value="Commander" onclick="location.href='confirmation.html';" id="formSend" class="form_send"/>
+            <input type="submit" value="Commander" onclick="location.href='confirm.html';" id="formSend" class="form_send"/>
             <a href="#" class="form_close">&times;</a>
         </fieldset>
     </form>
