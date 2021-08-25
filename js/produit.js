@@ -31,7 +31,7 @@ const addBasket = panier => {
 function displayArticle(product){
     document.getElementById("containerProduit").innerHTML +=
     `<div class="photo-produit">
-        <div class="produits_img">
+        <div class="produit_img">
             <img src=${teddy.imageUrl} alt="Photo de l'article choisi d'ours en peluches" class="image"/>
         </div>
         <div class="produit_description">
@@ -51,7 +51,7 @@ function displayArticle(product){
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <p class="teddy-prixtotal"> ${teddy.pricetotal / 100}€ </p>
+                    <p id="teddyPrixTotal"> ${teddy.pricetotal / 100}€ </p>
                 </div>
                     <a href="../pagesHTML/panier.html"><button type="submit"id="panier" data-id="${teddy._id}" value="submit">Ajouter au panier</button></a>
             </div>

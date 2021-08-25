@@ -229,6 +229,14 @@
             font-size: 25px;
             color: $colour-black;
             padding-bottom: 80px;
+            @include responsive(tablet){
+                padding-bottom: 10px;
+                height: auto;
+            }
+            @include responsive(mobile){
+                height: auto;
+                padding-bottom: 10px;
+            }
         }
     .photo-produit{
         height: 600px;
@@ -238,10 +246,13 @@
         margin-bottom: 80px;
         @include responsive(tablet){
             @include flex(column, space-evenly);
+            margin-top: 10px;
+            height: auto;
         }
         @include responsive(mobile){
             @include flex(column, space-evenly);
-            
+            margin-top: 10px;
+            height: auto;
         }
     }
     .produit_img{  
@@ -252,15 +263,21 @@
         align-items: center;
         animation: produit-load 1s ease-in-out 500ms forwards;
         transform: scale(0);
+        @include responsive(tablet){
+            width: 100%;
+        }
+        @include responsive(mobile){
+           width: 100%;
+        }
     }
         .image{
             @include responsive(tablet){
-                width: 450px;
+                width: 480px;
                 height: 450px;
             }
             @include responsive(mobile){
-                width: 350px;
-                height: 350px;
+                width: 450px;
+                height: 450px;
             }
             width: 550px;
             height: 550px;
@@ -283,8 +300,8 @@
     }
         .texte_description-produit{
             @include responsive(tablet){
-                width: 500px;
-                height: 400px
+                width: 540px;
+                height: 500px
             }
             @include responsive(mobile){
                 width: 480px;
