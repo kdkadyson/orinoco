@@ -22,7 +22,7 @@ fetch("http://localhost:3000/api/teddies")
         document.getElementById("voirArticle").href += `?id=${teddy._id}`;//backtic au lieu de id + teddy._id
     }
     
-});//fozhzff
+});
 //SI ERREUR API
 /*.catch(function (err) {
         alert("Désolé une erreur est survenue, ou la page démandée n'existe pas ! Veuillez réesayer")
