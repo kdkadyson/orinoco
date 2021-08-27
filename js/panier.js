@@ -2,7 +2,6 @@
 //AJOUTER/ RÉCUPÉRER / ENREGISTRER LES PRODUITS AU LOCAL STORAGE
     function addFavorites(teddyId){
         const listeFavorites = getFavorites();//récupére la liste
-        const favorite = displayFavotites(listeFavorites)
         listeFavorites.push(teddyId);//Ajouter produit ds tableau
         saveFavorites(listeFavorites);   
     }
@@ -16,31 +15,65 @@
                 return JSON.parse(listeFavorites);
             }
     }
-    function displayFavotites(favorite){ 
-        document.getElementById("containerPanier").innerHTML +=
-        `<div class="item-panier">
-                <div class="panier_uno">
-                    <div class="panier_photo">
-                        <img src=${favorite.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
-                    </div>
-                    <div class="panier_description">
-                        <div class="texte_description-panier">
-                            <p class="teddy-nom">${favorite.name}</p>
-                            <p class="teddy-id">${favorite._id}</p>
-                            <p class="teddy-quantity">Quantité : ${favorite.quantity}</p>
-                            <p class="teddy-total"> :Prix Total : ${favorite.quantity * favorite.price / 100} €</p>
-                            <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
-    }
     function saveFavorites(listeFavorites){
         localStorage.setItem(listeFavorites, JSON.stringify(listeFavorites));
     };
-        
+
+    //FETCH / DISPLAY DANS HTML
+    loadConfig().then(data =>{
+        config = data;
+        fetch(config.host + "api/teddies",
+        {
+            "method" : "POST",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            "body": JSON.stringify({favorites: getFavoritesId()})
+        }).then(data => data.json())
+        .then(jsonlistProduit =>{
+            for(let jsonProduit of jsonlistProduit){
+                let produit = new Teddies(jsonProduit);
+                    document.getElementById("containerPanier").innerHTML +=
+                    `<div>
+                    <div class="item-panier">
+                        <div class="panier_uno">
+                            <div class="panier_photo">
+                                <img src=${favorite.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
+                            </div>
+                            <div class="panier_description">
+                                <div class="texte_description-panier">
+                                    <p class="teddy-nom">${favorite.name}</p>
+                                    <p class="teddy-quantity">Quantité : ${favorite.quantity}</p>
+                                    <p class="teddy-total"> :Prix Total : ${favorite.quantity * favorite.price / 100} €</p>
+                                    <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="prix_valider">
+                    <div id="prixPanier">
+                        <p>Prix Total : </p>
+                    </div>
+                    <div id="validerPanier"> 
+                        <a href="#form" id="boutonPanier" class="bouton_panier" data-id="${favorite._id}"> Valider mon Panier</a>
+                    </div>   
+                </div>`;
+            }
+            document.getElementById("supprimerPanier").forEach(dislike =>{
+                dislike.addEventlistener("click", function(){
+                    removeFavorites(this.dataset.id);
+                })
+            })
+        })
+    })
+    
         
     
+    
+        
+        
+
 
 /*const teddies =JSON.parse(localStorage.getItem("panier")) ? JSON.parse(localStorage.getItem("panier")) : [];
 
