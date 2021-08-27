@@ -41,39 +41,26 @@
     <!--SECTION MAIN-->
     <main>
         <section id="panierVide" class="panier-vide">
-            <p><i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
-                Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i></p>
+            <!--<p><i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
+                Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i></p>-->
         </section>
         <section id="containerPanier">
             <h1>Votre Panier</h1>
-            <div class="item-panier">
+           <!-- <div class="item-panier">
                 <div class="panier_uno">
                     <div class="panier_photo">
-                        <img src=${teddy.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
+                        <img src=${favorite.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
                     </div>
                     <div class="panier_description">
                         <div class="texte_description-panier">
-                            <p class="teddy-nom">${teddy.name}</p>
-                            <p class="teddy-quantity">Quantité : ${teddy.quantity}</p>
-                            <p class="teddy-total"> :Prix Total : ${teddy.quantite * teddy.price / 100} €</p>
+                            <p class="teddy-nom">${favorite.name}</p>
+                            <p class="teddy-quantity">Quantité : ${favorite.quantity}</p>
+                            <p class="teddy-total"> :Prix Total : ${favorite.quantity * favorite.price / 100} €</p>
                             <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
                         </div>
                     </div>
                 </div>
-                <div class="panier_uno">
-                    <div class="panier_photo">
-                        <img src=${teddy.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
-                    </div>
-                    <div class="panier_description">
-                        <div class="texte_description-panier">
-                            <p class="teddy-nom">${teddy.name}</p>
-                            <p class="teddy-quantity">Quantité : ${teddy.quantity}</p>
-                            <p class="teddy-total"> :Prix Total : ${teddy.quantite * teddy.price / 100} €</p>
-                            <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </section>
         <div class="prix_valider">
             <div id="prixPanier">

@@ -42,33 +42,6 @@
         <section id="containerProduit" class="container-produit">
             <h1 class="titre">Optimiez votre choix ! :</h1><br/>
             <p class="sous_titre">Oribear vous propose ici de choisir la couleur que vous désirez, parmi un choix de couleurs proposés. </p>
-            <div class="photo-produit">
-                <div class="produit_img">
-                    <img src=${teddy.imageUrl} alt="Photo de l'article choisi d'ours en peluches" class="image"/>
-                </div>
-                <div class="produit_description">
-                    <div class="texte_description-produit">
-                        <p class="teddy-nom"> ${teddy.name} </p>
-                        <p class="ted-id"> ${teddy._id} </p>
-                        <p class=" teddy-des"> ${teddy.description} </p>
-                        <p class="teddy-prix"> ${teddy.price / 100}€ </p>
-                        <div id="choixQuantite">
-                            <select id="teddyChoix" class="teddy-choix">
-                                <option>Choix des couleurs</option>
-                            </select>
-                            <select id="teddyQuantity" class="teddy-quantity">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                            <p  id="teddyPrixTotal" class="teddy-prixtotal"> ${teddy.pricetotal / 100}€ </p>
-                        </div>
-                            <a href="../pagesHTML/panier.html"><button type="submit"id="panier" data-id="${teddy._id}" value="submit">Ajouter au panier</button></a>
-                    </div>
-                </div>
-            </div> 
         </section>
       
     <!--FOOTER-->
@@ -94,7 +67,8 @@
         </div>
     </footer>
     
-    <!--JavaScript-->  
+    <!--JavaScript--> 
+    <script src="../js/panier.js"></script> 
     <script src="../js/ours.js"></script>
     <script src="../js/produit.js"></script>
 

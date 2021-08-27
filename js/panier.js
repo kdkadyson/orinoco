@@ -1,12 +1,54 @@
 
-//RÉCUPÉRATION DES PRODUITS DU LOCAL STORAGE
-const teddies =JSON.parse(localStorage.getItem("panier")) ? JSON.parse(localStorage.getItem("panier")) : [];
+//AJOUTER/ RÉCUPÉRER / ENREGISTRER LES PRODUITS AU LOCAL STORAGE
+    function addFavorites(teddyId){
+        const listeFavorites = getFavorites();//récupére la liste
+        const favorite = displayFavotites(listeFavorites)
+        listeFavorites.push(teddyId);//Ajouter produit ds tableau
+        saveFavorites(listeFavorites);   
+    }
+    function getFavorites(){
+        let listeFavorites = localStorage.getItem("listeFavorites");//si getItem ne trouve rien, retourne null + affichage mess html
+            if(listeFavorites == null){
+                return /*document.getElementById("panierVide").innerHTML +=
+                        `<p><i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
+                        Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i></p>`;*/
+            }else{//sinon parse car LS ne peux pas enreg. données complexes kom (tableaux/objets) désérialiser au format json
+                return JSON.parse(listeFavorites);
+            }
+    }
+    function displayFavotites(favorite){ 
+        document.getElementById("containerPanier").innerHTML +=
+        `<div class="item-panier">
+                <div class="panier_uno">
+                    <div class="panier_photo">
+                        <img src=${favorite.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
+                    </div>
+                    <div class="panier_description">
+                        <div class="texte_description-panier">
+                            <p class="teddy-nom">${favorite.name}</p>
+                            <p class="teddy-id">${favorite._id}</p>
+                            <p class="teddy-quantity">Quantité : ${favorite.quantity}</p>
+                            <p class="teddy-total"> :Prix Total : ${favorite.quantity * favorite.price / 100} €</p>
+                            <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+    }
+    function saveFavorites(listeFavorites){
+        localStorage.setItem(listeFavorites, JSON.stringify(listeFavorites));
+    };
+        
+        
+    
+
+/*const teddies =JSON.parse(localStorage.getItem("panier")) ? JSON.parse(localStorage.getItem("panier")) : [];
 
 //RÉCUPÉRATION ID PRODUIT 
 const addPanierId = [];
 
 //RÉCUPÉRER HTML
-const contaner = document.getElementById("containerPanier");
+const container = document.getElementById("containerPanier");
 
 //INITIALISER LE PRIX TOTAL À 0
 const totalPrice = 0;
@@ -14,7 +56,7 @@ const totalPrice = 0;
 //CALCUL DU PRIX TOTAL DU PANIER / SEND LOCAL STORAGE
 function totalPanier(teddy){
     totalPrice += teddy.quantité * teddy.price / 100;
-    const totalPrice = document.getElementById("prixTotal").textContent = totalPrice + "€";
+    const Price = document.getElementById("prixTotal").textContent = "Prix Total :" + "€";
     localStorage.getItem("prixTotal", JSON.stringify(prixTotal));
 };
 
@@ -49,7 +91,7 @@ teddies.forEach((teddy,i) =>{
 function deleteItem(_id){
     let teddy = teddies[_id];
     if (teddy.quantite > 1){ 
-        teddy.quantite--;
+        teddy.quantite --;
     }else{
         teddy.splice(_id, 1);
     }
@@ -60,7 +102,7 @@ document.getElementById("supprimerPanier")
 teddies.forEach((deleteBtn) => {
         deletebtn.addEventlistener("click",() => deleteItem(deleteBtn.dataset.id))
     });
-
+*/
 
                  //FORMULAIRE
 
