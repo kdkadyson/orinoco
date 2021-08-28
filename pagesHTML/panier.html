@@ -40,41 +40,23 @@
 
     <!--SECTION MAIN-->
     <main>
-        <section id="panierVide" class="panier-vide">
-            <!--<p><i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
-                Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i></p>-->
-        </section>
-        <section id="containerPanier">
+        <section class="titre-panier">
             <h1>Votre Panier</h1>
-        <!--<div>
-            <div class="item-panier">
-                <div class="panier_uno">
-                    <div class="panier_photo">
-                        <img src=${favorite.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
-                    </div>
-                    <div class="panier_description">
-                        <div class="texte_description-panier">
-                            <p class="teddy-nom">${favorite.name}</p>
-                            <p class="teddy-quantity">Quantité : ${favorite.quantity}</p>
-                            <p class="teddy-total"> :Prix Total : ${favorite.quantity * favorite.price / 100} €</p>
-                            <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-        </div>
-        <div class="prix_valider">
-            <div id="prixPanier">
-                <p>Prix Total : </p>
+        </section>
+        <section id="containerPanier" class="container-panier">
+
+        </section>
+        <section>
+            <div id="boutonsPanier"> 
+                <a href="#form" class="bouton_panier"> Valider mon Panier</a>
             </div>
-            <div id="validerPanier"> 
-                <a href="#form" id="boutonPanier" class="bouton_panier"> Valider mon Panier</a>
-            </div>   
-        </div>-->
         </section>
     </main>
+    <section id="containerForm">
 
-    <form action="#" method="POST">
+    </section>
+
+    <!--<form action="#" method="POST">
         <fieldset id="form" class="form">
             <legend>Passer votre commande en renseignant vos informations ci-dessous :</legend>
             <div class="">
@@ -108,7 +90,7 @@
             <input type="submit" value="Commander" onclick="location.href='confirm.html';" id="formSend" class="form_send"/>
             <a href="#" class="form_close">&times;</a>
         </fieldset>
-    </form>
+    </form>-->
     
     <!--FOOTER-->
 

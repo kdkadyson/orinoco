@@ -1,266 +1,206 @@
 
-//AJOUTER/ RÉCUPÉRER / ENREGISTRER LES PRODUITS AU LOCAL STORAGE
-    function addFavorites(teddyId){
-        const listeFavorites = getFavorites();//récupére la liste
-        listeFavorites.push(teddyId);//Ajouter produit ds tableau
-        saveFavorites(listeFavorites);   
-    }
-    function getFavorites(){
-        let listeFavorites = localStorage.getItem("listeFavorites");//si getItem ne trouve rien, retourne null + affichage mess html
-            if(listeFavorites == null){
-                return /*document.getElementById("panierVide").innerHTML +=
-                        `<p><i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
-                        Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i></p>`;*/
-            }else{//sinon parse car LS ne peux pas enreg. données complexes kom (tableaux/objets) désérialiser au format json
-                return JSON.parse(listeFavorites);
-            }
-    }
-    function saveFavorites(listeFavorites){
-        localStorage.setItem(listeFavorites, JSON.stringify(listeFavorites));
-    };
+//RÉCUPÉRER PRODUIT SELECTIONNÉ
+let localStorageIn = JSON.parse(localStorage.getItem("produit"));          
 
-    //FETCH / DISPLAY DANS HTML
-    loadConfig().then(data =>{
-        config = data;
-        fetch(config.host + "api/teddies",
-        {
-            "method" : "POST",
-            headers:{
-                'Content-Type':'application/json'
-            },
-            "body": JSON.stringify({favorites: getFavoritesId()})
-        }).then(data => data.json())
-        .then(jsonlistProduit =>{
-            for(let jsonProduit of jsonlistProduit){
-                let produit = new Teddies(jsonProduit);
-                    document.getElementById("containerPanier").innerHTML +=
-                    `<div>
-                    <div class="item-panier">
-                        <div class="panier_uno">
-                            <div class="panier_photo">
-                                <img src=${favorite.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
-                            </div>
-                            <div class="panier_description">
-                                <div class="texte_description-panier">
-                                    <p class="teddy-nom">${favorite.name}</p>
-                                    <p class="teddy-quantity">Quantité : ${favorite.quantity}</p>
-                                    <p class="teddy-total"> :Prix Total : ${favorite.quantity * favorite.price / 100} €</p>
-                                    <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
-                                </div>
+//DISPLAY PRODUIT
+const voirPanier = document.getElementById("containerPanier")
+//SI PANIER VIDE ou(||)PRODUIT SUPPRIMÉ (2 CONDITIONS)
+    if(localStorageIn === null || localStorageIn == 0){
+    const panierVide = 
+    `<div>
+        <p> 
+            <i id="panierVide" class="fas fa-cart-arrow-down panier-vide"></i> Hélas, votre Panier est vide pour le moment ! </br/>
+            Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down">
+            </i>
+        </p>
+    </div>`;
+        voirPanier.innerHTML = panierVide;
+    }else{
+        let produitPanier = [];
+        for(j = 0; j < localStorageIn.length; j++){
+            produitPanier += 
+                `<div class="item-panier">
+                    <div class="panier_uno">
+                        <div class="panier_photo">
+                            <div><img src=${localStorageIn[j].imageUrl} alt="Image d'ours choisi" class="panier_img"/></div>
+                        </div>
+                        <div class="panier_description">
+                            <div class="texte_description-panier">
+                                <div class="teddy-nom">${localStorageIn[j].name}</div>
+                                <div class="teddy-choix"> <span> Couleur : 
+                                </span> ${localStorageIn[j].optionCouleur}</div>
+                                <div class="teddy-quantity"> Quantité : 
+                                ${localStorageIn[j].quantity}</div>
+                                <div class="teddy-total"> Total : 
+                                ${localStorageIn[j].quantity * localStorageIn.price / 100} €</div>
+                                <input type="button"value="Supprimer" 
+                                id="supprimerItem"/></input>
                             </div>
                         </div>
-                    </div> 
-                </div>
-                <div class="prix_valider">
-                    <div id="prixPanier">
-                        <p>Prix Total : </p>
                     </div>
-                    <div id="validerPanier"> 
-                        <a href="#form" id="boutonPanier" class="bouton_panier" data-id="${favorite._id}"> Valider mon Panier</a>
-                    </div>   
                 </div>`;
-            }
-            document.getElementById("supprimerPanier").forEach(dislike =>{
-                dislike.addEventlistener("click", function(){
-                    removeFavorites(this.dataset.id);
-                })
-            })
-        })
-    })
-    
-        
-    
-    
-        
-        
 
-
-/*const teddies =JSON.parse(localStorage.getItem("panier")) ? JSON.parse(localStorage.getItem("panier")) : [];
-
-//RÉCUPÉRATION ID PRODUIT 
-const addPanierId = [];
-
-//RÉCUPÉRER HTML
-const container = document.getElementById("containerPanier");
-
-//INITIALISER LE PRIX TOTAL À 0
-const totalPrice = 0;
-
-//CALCUL DU PRIX TOTAL DU PANIER / SEND LOCAL STORAGE
-function totalPanier(teddy){
-    totalPrice += teddy.quantité * teddy.price / 100;
-    const Price = document.getElementById("prixTotal").textContent = "Prix Total :" + "€";
-    localStorage.getItem("prixTotal", JSON.stringify(prixTotal));
-};
-
-//RÉCUPÉRER / BOUCLE CALCUL PRIX TOTAL PANIER
-function totalPanier(teddy){ 
-    for(let i = 0; i < teddy.quantite; i++){
-        addPanierId.push(teddy._id);   
+        }
+        if(j == localStorageIn.length){ 
+            voirPanier.innerHTML = produitPanier;
+        } 
     }
-};
+    //SUPPRIMER PRODUIT SELON L'ID AU CLICK
+    let removeItem = document.querySelectorAll("#supprimerItem");
+    
+    for(let k = 0; k < removeItem.length; k++){
+        removeItem[k].addEventListener("click", (event) =>{
+            event.preventDefault();//evite le comportement par défaut des btn à recharger une page
+        let itemOter = localStorageIn[k].id_item;
+        //MÉTHODE FILTER = SÉLECTIONNER PRODUIT À GARDER ET SUPPRIME AVEC BTN
+        localStorageIn = localStorageIn.filter(el => el.id_item !== itemOter);//fonction inverse ! ote seulemt l'élèmt à oter
+        localStorage.setItem("produit", JSON.stringify(localStorageIn));
+        //FENÊTRE POP UP ALERT
+        alert("Ce produit va être supprimé de votre Panier.");
+        window.location.href = "panier.html"
+    });
+}
+    
+//VIDER PANIER (méthode insert adjacent html pr ne pas réécrire le contenu de ma div)
+const toutVider = `<a class="bouton_vider">    Vider mon Panier
+                    </a>`;
+voirPanier.insertAdjacentHTML ("beforeend", toutVider);
+//SÉLECTIONER BTN VIDER PANIER
+const btnSupprimerPanier = document.querySelector(".bouton_vider");
+//SUPPRESION KEY PRODUIT DU LS
+btnSupprimerPanier.addEventListener("click", (event) =>{//fonction de callback
+event.preventDefault();
+//VIDER DU LS
+localStorage.removeItem("produit");
+//ALERT PANIER VIDE
+alert ("Vider tout votre Panier ?");
+window.location.href = "panier.html";
+});
 
-//BOUCLE AFFICHAGE
-teddies.forEach((teddy,i) =>{
-    container.innerHTML +=
-    `<div class="item-panier">
-        <div class="panier_uno">
-            <div class="panier_photo">
-                <img src=${teddy.imageUrl} alt="Image d'ours choisi" class="panier_img"/>
-            </div>
-            <div class="panier_description">
-                <div class="texte_description-panier">
-                    <p class="teddy-nom">${teddy.name}</p>
-                    <p class="teddy-quantity">Quantité : ${teddy.quantity}</p>
-                    <p class="teddy-total"> :Prix Total : ${teddy.quantite * teddy.price / 100} €</p>
-                    <input type="button" value="Supprimer" id="supprimerPanier" data-id="${i}"/>
-                </div>
-            </div>
+//CALCULER /DISPLAY LE PRIX TOTAL DU PANIER
+//RÉCUPÉRER LES PRIX DU PANIER / B. FOR PR CHERCHER PRIX
+let totalPanier = [];
+for(let l = 0; l < localStorageIn.length; l++){
+    let amountProduct = localStorageIn[l].price;
+//AJOUTER AU PRIX TOTAL
+totalPanier.push(amountProduct)   
+}
+//ADDITIONNER LE TOTAL PANIER (MÉTHODE REDUCE)
+const calculer = (accumulator, currentValue) => accumulator + currentValue;
+const prixTotal = totalPanier.reduce(calculer,0);//0= valeur par défaut qd panier videsinon erreur 
+console.log(prixTotal);                    
+//DISPLAY DS HTML
+const totalBasket =
+    `<div class="prix">
+        <div id="prixPanier">
+            <p> Prix Total : ${prixTotal} </p>
         </div>
     </div>`;
-});
 
-//SUPPRIMER ITEM / ÉCOUTER L'EVENT
-function deleteItem(_id){
-    let teddy = teddies[_id];
-    if (teddy.quantite > 1){ 
-        teddy.quantite --;
-    }else{
-        teddy.splice(_id, 1);
+voirPanier.insertAdjacentHTML("beforeend", totalBasket);
+
+
+
+                //FORMULAIRE
+
+//DISPLAY FORM
+const voirForm = () =>{
+const formPage = document.querySelector("#containerForm");  
+    const Form = 
+`<form method="POST">
+    <fieldset id="form" class="form">
+        <legend>Passer votre commande en renseignant vos informations ci-dessous :</legend>
+        <div class="">
+            <input type="radio" id="Mr" name="drone" value="Mr" checked>
+            <label for="Mr">Mr</label>
+            <input type="radio" id="Mme" name="drone" value="Mme" checked>
+            <label for="Mme">Mme</label>
+        </div>
+        <div class="box_size2">
+            <label for="nom">Nom :</label><br/>
+            <input type="text" id="nom" name="nom" required placeholder="ex:  LeBienvenue"/>
+        </div>
+        <div class="box_size2">
+            <label for="prenom">Prenom :</label><br/>
+            <input type="text" id="prenom" name="prenom" required placeholder="ex:  Noé"/>
+        </div>
+        <div class="box_size2">
+            <label for="adresse">Adresse :</label><br/>
+            <input type="text" id="adresse" name="adresse" required  placeholder="ex:  50,rue des Oursons"/>
+        </div>
+        <div class="box_size2">
+            <label for="ville">Ville :</label><br/>
+            <input type="text" id="ville" name="ville" required  placeholder="ex:  Paris"
+                pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"/>
+        </div>
+        <div class="box_size2">
+        <label for="codePostal">codePostal :</label><br/>
+        <input type="text" id="codePostal" name="codePostal" required  placeholder="ex:  75001"
+            pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"/>
+    </div>
+        <div class="box_size2">
+            <label for="email">E-mail :</label><br/>
+            <input type="email" id="email" name="email" required placeholder="ex:  oribear@gmail.fr"
+                pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}"/>
+        </div>                                 
+        <input type="submit" value="Commander" " id="formSend" class="form_send"/>
+        <a href="#" class="form_close">&times;
+        </a>
+    </fieldset>
+</form>`;
+
+//mettre ds html
+    voirPanier.insertAdjacentHTML("beforeend", Form);
+};
+//afficher
+voirForm();
+  
+//Récupérer /send les données au LS
+//SÉLECTION DU BOUTON SEND FORM
+const sendForm = document.querySelector("#formSend");
+
+//EVENT LISTENER / RÉCUPÉRER DONNÉES POUR LS 
+sendForm.addEventListener("click", (event) =>{
+    event.preventDefault(); 
+
+//CLASS PR OBJET ATTRIBUTS 
+class formValues{
+    constructor(){ 
+        this.nom = document.querySelector("#nom").value;
+        this.prenom = document.querySelector("#prenom").value;
+        this.adresse = document.querySelector("#adresse").value;
+        this.ville = document.querySelector("#ville").value;
+        this. codePostal= document.querySelector("#codePostal").value;
+        this.email = document.querySelector("#email").value
     }
-    localStorage.setItem("panier", JSON.stringify(teddies));
-    window.location.reload();
 }
-document.getElementById("supprimerPanier")
-teddies.forEach((deleteBtn) => {
-        deletebtn.addEventlistener("click",() => deleteItem(deleteBtn.dataset.id))
-    });
-*/
+//APPELER INSTANCE CLASS FORMVALUES PR CRÉER OBJET donnéesForm
+const donnéesForm = new formValues();
 
-                 //FORMULAIRE
-
-//VÉRIFIER lES DONNÉES
-checkInput = () =>{
-    //Controle Regex
-    let checkString = [a-zA-Z];
-    let checkNumber = [0-9];
-
-    //MESSAGE FIN DE CONTRÔLE
-    let checkMessage = "";
-
-    //RÉCUPÉRER DONNNÉES
-    let nom = document.getElementById("nom").value;
-    let prenom = document.getElementById("prenom").value;
-    let adresse = document.getElementById("adresse").value;
-    let ville = document.getElementById("ville").value;
-    let email = document.getElementById("e-mail").value;
-
-    //TESTER DONNÉES
-    //nom/prénom => aucun nbre ni charactères spèciaux
-    if(checkNumber.test(nom) == true || checkSpecialCharacter.test(nom) == true || nom == ""){
-        checkMessage = "Vérifier ou renseigner votre Nom";
-    }else{
-        console.log("Administration Nom ok");
-    };
-    if (checkNumber.test(prenom) == true || checkSpecialCharacter.test(prenom) == true || prenom == ""){
-        checkMessage = checkMessage + "\n" + "Vérifier ou renseigner votre Prénom";
-
-    }else{
-        console.log("Administration Prénom ok")
-    };
-    //adresse avec ou ss no de rue et ss charactères spéciaux
-    if(checkSpecialCharacter.test(adresse) == true || adresse == ""){
-        checkMessage = checkMessage + "\n" + "Vérifier ou renseigner votre Adresse";
-    }else{
-        console.log("Administration Adresse ok");
-    };
-    //ville => aucune ville en France ne comporte de chiffre ou charactères spéciaux
-    if(checkNumber.test(ville) == true || checkSpecialCharacter.test(ville) == true || ville == ""){
-        checkMessage = checkMessage + "\n" + "Vérifier ou renseigner votre Ville";
-    }else{
-        console.log("Administration Ville ok");
-    };
-    //SI UN DES CHAMPS MAL/NON REMPLI => MESSAGE
-    if(checkMessage !=""){
-        alert("il est nécessaire de :" + "\n" + checkMessage);
-    } 
-    //RÉCUPÉRER LES DONNÉES CLIENTS DS OBJECT
-    
-    else{
-        client = {
-            lasttName : nom,
-            firstName : prenom,
-            adresse : adresse,
-            city : ville,
-            email : email
-        };
-        return client;
-    };
-};
-
-//VÉRIFIER PANIER /SEND 
-checkPanier = () =>{
- //Vérifier qu'il y ai au moins un produit dans le panier
- let etatPanier = JSON.parse(localStorage.getItem("panier"));
- //SI PANIER VIDE =>SUPPRIMER DU LOCAL STORAGE / ALERT
- if(etatPanier == null){
-     // ET SI USER CONTINU PROCESS DE COMMANDE
-     alert("Il y a eu un problème avec votre panier, merci de recharger la page pour le corriger");
-     return false
- }else if(etatPanier.length < 1 || etatPanier == null){
-     alert("Votre panier est vide");
-     return false;
- }else{
-     //AJOUTER PANIER ET SEND
-     JSON.parse(localStorage.getItem("panier")).forEach((product) =>{
-         products.push(product._id);
-     });
-     return true;
- }
-};
-
-//ENVOYER FORMULAIRE À API AVEC SA F. REQUEST POST
-donneesEnvoi = (objectRequest) =>{
-    return new Promise((resolve) =>{
-        let request = new XMLHttpRequest();
-        request.onreadystatechange = function(){
-            if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
-    //RÉCUPÉRER RETOUR API / AFFICHAGE DS CONFIRM.HTML
-     sessionStorage.setItem("order",this.resposeText);
-    //CHARGER LA PAGE DE CONFIRMATION
-     document.forms["basketForm"].action = "../pagesHTML/confirm.html";
-     document.forms["basketForm"].submit();
-     resolve(JSON.parse(tjis.resposeText));
-    }
-    };
-    request.open("POST",APIURL + "order");
-    request.setRequestHeader("content-Type", "application/json");
-    request.send(objectRequest);
-});
-  };
-
-//ÉCOUTER L'EVENT AU CLICK 
-validForm = () =>{
-    let sendForm = document.getElementById("formSend");
-    sendForm.addEventlistener("click", function(){
-        //VÉRIFIER PANIER / FORM => OBJECT À SEND
-        if (checkPanier() == true && checkInput() !=null){
-            let objet = {
-                client,products
-            };
-            //CONVERSION JSON
-            let objectRequest = JSON.stringify(object);
-            //F. ENVOYER OBJECT
-            donneesEnvoi(objectRequest)
-            //RETOURNER ÉTAT INITIAL
-            client = {};
-            products = [];
-            localStorage.clear();
+//VALIDATION FORMULAIRE
+function nameControl(){ 
+    const attributsForm = formValues.nom;
+        if(/^[A-Za-z]{3,20}$/.test(attributsForm)){
+            return true;
+        console.log("ok"); 
         }else{
-            console.log("ERREUR");
-        };
-    });
+            alert("Les chiffre et symbole ne sont autorisés \n Ne pas dépasser 20 caractères et en avoir un minimum de 3.")
+            return false;
+        console.log("ko"); 
+    };  
 };
+//SEND LOCAL STORAGE
+if(nameControl()){ 
+    localStorage.setItem("formValues", JSON.stringify(formValues))  
+}else{
+    alert("Veuillez vous assurer que le formulaire soit bien rempli.");
+}
+//METTRE LES VALUES DS OBJET PR SEND AU SERVER SI VÉRIFIÉ
+const sendServer = {// 2 objets ds objet
+    localStorageIn,
+    formValues 
+}
+//ENVOI AU SERVER
 
 
 
@@ -269,12 +209,7 @@ validForm = () =>{
 
 
 
-
-
-
-
-    
-
-
-
-    
+ /*<input type="submit" value="Commander" onclick="location.href='confirm.html';" id="formSend" class="form_send"/>
+        <a href="#" class="form_close">&times;
+        </a>*/  
+})

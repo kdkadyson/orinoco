@@ -467,7 +467,7 @@ main{
             @include font-weight(bolder);
             font-size: 20px;
         }
-        .prix_valider{
+        /*.prix_valider{
             @include flex(row, center);
             align-items: center;
             margin-bottom: 50px;
@@ -475,7 +475,7 @@ main{
             @include responsive(mobile){
                 @include flex(column, center);
             }
-        }
+        }*/
         #prixPanier p{
             padding-top: 35px;
             font-size: 25px;
@@ -484,6 +484,9 @@ main{
             @include responsive(mobile){
                 margin-right: 330px;
             }
+        }
+        #boutonsPanier{
+            @include flex(row, center);
         }
 }
     // PAGE 4 CONFIRMATION 
