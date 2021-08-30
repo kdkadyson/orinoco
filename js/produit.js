@@ -34,11 +34,7 @@ function voirArticle(teddyId){
                                 </select>
                                 <label for="quantite"> Qté </label>
                                 <select id="teddyQuantity" class="teddy-quantity">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
+                                   
                                 </select>
                                 <p id="teddyPrixTotal" class="teddy-prixtotal" value="Prix total :" ${product.totalprice / 100} € > </p>
                             </div>
@@ -47,6 +43,7 @@ function voirArticle(teddyId){
                          </div>
                     </div>
                 </div>`;
+
             //AFFICHAGE OPTIONS COULEURS
             const colorsOption = teddyItem.colors;//recupére mes colors/ boucle for pour afficher
             let voirCouleur = [];
@@ -57,24 +54,39 @@ function voirArticle(teddyId){
                 const nomCouleur = document.getElementById("teddyChoix");
                 nomCouleur.innerHTML = voirCouleur;
             }
+
+            // OPTIONS QUANTITÉ
+            const quantityOption = 
+         ` <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>`;
+            //METTRE QUANTITÉ DS HTML
+            const quantityNumber = 
+            document.getElementById("teddyQuantity");
+            quantityNumber.innerHTML = quantityOption;
             
             //RÉUPÉRATION DES DONNÉES USER 
             //SÉLECTION ID CHOIX
             const choixSelect = document.getElementById("teddyChoix");
-            //SELECTION BOUTON Ajouter au panier
+            //SELECTION BOUTON Ajouter au panier/EVENT LISTENER
             const sendPanier = document.getElementById("dansPanier");
             sendPanier.addEventListener("click", (event) =>{//function de callback
                 event.preventDefault();//pr ne pas reactualiser la page qdon rappuie sue lz btn
-            //choix du user ds var
-            const choixUser = choixSelect.value;
+            //choix du user color/qte ds var
+            const choixCouleur = choixSelect.value;
+            const choixQuantite = quantityNumber.value;
+            console.log(choixQuantite);
+        
             //RÉCUPERER VALEUR DE CHOIX
             let optionProduit = {//objet avec ses clés/valeur
                 imageUrl : product.imageUrl,
                 name : product.name,
                 id_item : product._id,
-                optionCouleur : choixUser,
-                quantity : 1,
-                price : product.price / 100
+                optionCouleur : choixCouleur,
+                quantity : choixQuantite,
+                price : (product.price * choixQuantite) / 100,
             };
             
             //RÉCUPÉRER PRODUIT SELECTIONNÉ/ VERIFIER si/ou CRÉER LS / ENVOYER AU LOCAL STORAGE
@@ -82,7 +94,7 @@ function voirArticle(teddyId){
             
             //FENÊTRE POP UP CONFIRM
             const popupFenetre = () =>{
-                if(window.confirm(`${product.name} (${choixUser}) a bien été ajouter à votre Panier.  Consulter votre panier : OK, ou revenir à l'accueil : ANNULER.`)){
+                if(window.confirm(`(${choixQuantite}) ${product.name} (${choixCouleur}) a bien été ajouter à votre Panier.  Consulter votre panier : OK, ou revenir à l'accueil : ANNULER.`)){
                     window.location.href = "panier.html";
                 }else{
                     window.location.href = "home.html";
@@ -105,13 +117,7 @@ function voirArticle(teddyId){
             }
             
         });
-                
-
-            //AFFICHAGE OPTIONS COULEURS
-            /*for (let colors of product.colors){
-                document.getElementById("teddyChoix").innerHTML +=
-                `<option value="1">${product.colors}</option>`;
-            }*/ 
+ 
         }
     })
 }
