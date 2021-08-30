@@ -24,10 +24,9 @@ function voirArticle(teddyId){
                     <div class="produit_description">
                         <div class="texte_description-produit">
                             <p class="teddy-nom"> ${product.name} </p>
-                            <p class="ted-id"> ${product._id} </p>
-                            <p class=" teddy-des"> ${product.description} </p>
+                            <p class="teddy-des"> ${product.description} </p>
                             <p class="teddy-prix"> ${product.price / 100}€ </p>
-                            <div id="choixQuantite class="choix-quantity">
+                            <div id="choixQuantite" class="choix-quantity">
                                 <label for="optionCouleur"> Choix des couleurs </label>
                                 <select id="teddyChoix" class="teddy-choix">
 
@@ -88,6 +87,8 @@ function voirArticle(teddyId){
                 quantity : choixQuantite,
                 price : (product.price * choixQuantite) / 100,
             };
+            console.log("optionProduit");
+            console.log(product.price);
             
             //RÉCUPÉRER PRODUIT SELECTIONNÉ/ VERIFIER si/ou CRÉER LS / ENVOYER AU LOCAL STORAGE
             let localStorageIn = JSON.parse(localStorage.getItem("produit"));

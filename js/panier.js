@@ -29,14 +29,13 @@ const voirPanier = document.getElementById("containerPanier")
                                 <div class="teddy-nom">${localStorageIn[j].name}</div>
                                 <div class="teddy-choix"> Couleur : ${localStorageIn[j].optionCouleur}</div>
                                 <div class="teddy-quantity"> Quantité : ${localStorageIn[j].quantity}</div>
-                                <div class="teddy-total"> Total : ${localStorageIn[j].quantity * localStorageIn.price / 100} €</div>
+                                <div class="teddy-total"> Total : ${localStorageIn[j].quantity * localStorageIn.price} €</div>
                                 <input type="button"value="Supprimer" 
                                 id="supprimerItem"/></input>
                             </div>
                         </div>
                     </div>
                 </div>`;
-
         }
         if(j == localStorageIn.length){ 
             voirPanier.innerHTML = produitPanier;
@@ -291,7 +290,7 @@ function envoiServer(sendServer){
                    console.log(`reponse ok: ${response.ok}`);
             //RÉCUPÉRARTION ID RESPONSE
                     console.log("Id commande");
-                    console.log(contenuServer._id);; 
+                    console.log(contenuServer._id); 
             //METTRE ID DS LS
                     localStorage.setItem("responseId", contenuServer._id);
             //AFFICHER ID 
@@ -303,7 +302,7 @@ function envoiServer(sendServer){
                };
            } catch (err) {
                console.log("catch");  
-               console.log(e);
+               console.log(err);
                alert(`Erreur du catch()${err}`);  
            };
        }); 
