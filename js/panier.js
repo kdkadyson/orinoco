@@ -16,9 +16,11 @@ const voirPanier = document.getElementById("containerPanier")
     </div>`;
         voirPanier.innerHTML = panierVide;
     }else{
-        let produitPanier = [];
-        for(j = 0; j < localStorageIn.length; j++){
-            produitPanier = 
+          for(j = 0; j < localStorageIn.length; j++)
+          {
+            console.log("localStorageIn[j]")
+              console.log(localStorageIn[j]);
+            voirPanier.innerHTML += 
                 `<div class="item-panier">
                     <div class="panier_uno">
                         <div class="panier_photo">
@@ -27,9 +29,8 @@ const voirPanier = document.getElementById("containerPanier")
                         <div class="panier_description">
                             <div class="texte_description-panier">
                                 <div class="teddy-nom">${localStorageIn[j].name}</div>
-                                <div class="teddy-choix"> Couleur : ${localStorageIn[j].optionCouleur}</div>
                                 <div class="teddy-quantity"> Quantité : ${localStorageIn[j].quantity}</div>
-                                <div class="teddy-total"> Total : ${localStorageIn[j].quantity * localStorageIn.price} €</div>
+                                <div class="teddy-total"> Total : ${localStorageIn[j].quantity * localStorageIn[j].price} €</div>
                                 <input type="button"value="Supprimer" 
                                 id="supprimerItem"/></input>
                             </div>
@@ -37,9 +38,8 @@ const voirPanier = document.getElementById("containerPanier")
                     </div>
                 </div>`;
         }
-        if(j == localStorageIn.length){ 
-            voirPanier.innerHTML = produitPanier;
-        } 
+
+        
     }
     //SUPPRIMER PRODUIT SELON L'ID AU CLICK
     let removeItem = document.querySelectorAll("#supprimerItem");
@@ -75,21 +75,19 @@ window.location.href = "panier.html";
 
 //CALCULER /DISPLAY LE PRIX TOTAL DU PANIER
 //RÉCUPÉRER LES PRIX DU PANIER / B. FOR PR CHERCHER PRIX
-let totalPanier = [];
+let totalPanier = 0;
 for(let l = 0; l < localStorageIn.length; l++){
-    let amountProduct = localStorageIn[l].price;
-//AJOUTER AU PRIX TOTAL
-totalPanier.push(amountProduct)   
+    totalPanier += localStorageIn[l].price *localStorageIn[l].quantity;
 }
 //ADDITIONNER LE TOTAL PANIER (MÉTHODE REDUCE)
-const calculer = (accumulator, currentValue) => accumulator + currentValue;
-const prixTotal = totalPanier.reduce(calculer,0);//0= valeur par défaut qd panier videsinon erreur 
+/*const calculer = (accumulator, currentValue) => accumulator + currentValue;
+const prixTotal = totalPanier.reduce(calculer,0);//0= valeur par défaut qd panier videsinon erreur */
 
 //DISPLAY DS HTML
 const totalBasket =
     `<div class="prix">
         <div id="prixPanier">
-            <p> Prix Total : ${prixTotal} </p>
+            <p> Prix Total : ${totalPanier} € </p>
         </div>
     </div>`;
 
@@ -257,12 +255,12 @@ sendForm.addEventListener("click", (event) =>{
     //SEND LOCAL STORAGE APRÈS VÉRIFICATIONS
     if(nomControle() && prenomControle() && adresseControle() && villeControle() && codePostalControle() && emailControle()){ 
         localStorage.setItem("formValues", JSON.stringify(formValues));
-        localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
+            localStorage.setItem("prixTotal", JSON.stringify(totalPanier));
     //METTRE LE FORMVALUES/CONTENU LS DS OBJET PR SEND QD VÉRIFIÉ
         const sendServer = {
             localStorageIn,
             formValues,
-            prixTotal 
+            totalPanier 
         };
         envoiServer(sendServer);
     }else{
@@ -273,7 +271,7 @@ sendForm.addEventListener("click", (event) =>{
 //fonction send server
 function envoiServer(sendServer){
    const promiseServer = 
-   fetch("https://restapi.fr/api/commandeTest",{
+fetch("http://localhost:3000/api/teddies/order",{
        method: "POST",
        body: JSON.stringify(sendServer),
        headers: {

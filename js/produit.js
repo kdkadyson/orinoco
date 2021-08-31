@@ -67,15 +67,12 @@ function voirArticle(teddyId){
             quantityNumber.innerHTML = quantityOption;
             
             //RÉUPÉRATION DES DONNÉES USER 
-            //SÉLECTION ID CHOIX
-            const choixSelect = document.getElementById("teddyChoix");
             //SELECTION BOUTON Ajouter au panier/EVENT LISTENER
             const sendPanier = document.getElementById("dansPanier");
             sendPanier.addEventListener("click", (event) =>{//function de callback
                 event.preventDefault();//pr ne pas reactualiser la page qdon rappuie sue lz btn
             //choix du user color/qte ds var
-            const choixCouleur = choixSelect.value;
-            const choixQuantite = quantityNumber.value;
+            const choixQuantite = parseInt(quantityNumber.value);
             console.log(choixQuantite);
         
             //RÉCUPERER VALEUR DE CHOIX
@@ -83,9 +80,8 @@ function voirArticle(teddyId){
                 imageUrl : product.imageUrl,
                 name : product.name,
                 id_item : product._id,
-                optionCouleur : choixCouleur,
                 quantity : choixQuantite,
-                price : (product.price * choixQuantite) / 100,
+                price : product.price / 100,
             };
             console.log("optionProduit");
             console.log(product.price);
@@ -95,7 +91,7 @@ function voirArticle(teddyId){
             
             //FENÊTRE POP UP CONFIRM
             const popupFenetre = () =>{
-                if(window.confirm(`(${choixQuantite}) ${product.name} (${choixCouleur}) a bien été ajouter à votre Panier.  Consulter votre panier : OK, ou revenir à l'accueil : ANNULER.`)){
+                if(window.confirm(`(${choixQuantite}) ${product.name} a bien été ajouter à votre Panier.  Consulter votre panier : OK, ou revenir à l'accueil : ANNULER.`)){
                     window.location.href = "panier.html";
                 }else{
                     window.location.href = "home.html";
