@@ -59,6 +59,18 @@ button:hover{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+//BOUTON Vider Panier
+.bouton_vider{
+    width: 220px;
+    height: 30px;
+    border: 3px solid $colour-primary;
+    border-radius: 50px 50px;
+    cursor: pointer; 
+    text-align: center;
+    background-color: $colour-primary ;
+    color: $colour-black;
+}
+
 // BOUTON Valider Panier 
 #validerPanier{
     @include responsive(mobile){

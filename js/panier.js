@@ -38,9 +38,7 @@ const voirPanier = document.getElementById("containerPanier")
                     </div>
                 </div>`;
         }
-
-        
-    }
+}
     //SUPPRIMER PRODUIT SELON L'ID AU CLICK
     let removeItem = document.querySelectorAll("#supprimerItem");
     
@@ -58,9 +56,8 @@ const voirPanier = document.getElementById("containerPanier")
 }
     
 //VIDER PANIER (méthode insert adjacent html pr ne pas réécrire le contenu de ma div)
-const toutVider = `<a class="bouton_vider">    Vider mon Panier
-                    </a>`;
-voirPanier.insertAdjacentHTML ("beforeend", toutVider);
+const toutVider = `<a class="bouton_vider"> Vider mon Panier </a>`;
+voirPanier.insertAdjacentHTML("beforeend", toutVider);
 //SÉLECTIONER BTN VIDER PANIER
 const btnSupprimerPanier = document.querySelector(".bouton_vider");
 //SUPPRESION KEY PRODUIT DU LS
@@ -85,10 +82,8 @@ const prixTotal = totalPanier.reduce(calculer,0);//0= valeur par défaut qd pani
 
 //DISPLAY DS HTML
 const totalBasket =
-    `<div class="prix">
-        <div id="prixPanier">
-            <p> Prix Total : ${totalPanier} € </p>
-        </div>
+    `<div class="prix-panier">
+        <p> Prix Total : ${totalPanier} € </p>
     </div>`;
 
 voirPanier.insertAdjacentHTML("beforeend", totalBasket);

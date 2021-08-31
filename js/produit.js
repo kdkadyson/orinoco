@@ -31,7 +31,7 @@ function voirArticle(teddyId){
                                 <select id="teddyChoix" class="teddy-choix">
 
                                 </select>
-                                <label for="quantite"> Qté </label>
+                                <label for="quantite"> Quantité </label>
                                 <select id="teddyQuantity" class="teddy-quantity">
                                    
                                 </select>
@@ -99,20 +99,32 @@ function voirArticle(teddyId){
             }
             // fonction send au ls
             const localStorageAjout = () =>{
-                localStorageIn.push(optionProduit);//new produit
-                localStorage.setItem("produit", JSON.stringify(localStorageIn));
-            };
-            //SI PRODUIT DS LS
-            if(localStorageIn){
-                localStorageAjout();
-                popupFenetre();
-            }//SINON CRÉER LS
-            else{
-                localStorageIn = [];
-                localStorageAjout();
-                popupFenetre();
-            }
+                //SI PRODUIT DS LS
+                if(localStorageIn){
+                    localStorageAjout();
+                    popupFenetre();
+                }//SINON CRÉER LS
+                else{
+                    localStorageIn = [];
+                    localStorageAjout();
+                    popupFenetre();
+                }
+            /*localStorageIn.push(optionProduit);//new produit
+            localStorage.setItem("produit", JSON.stringify(localStorageIn));*/
             
+            //VÉRIFIER SI IDEM TEDDY DS LS => RETOURNE INDEX
+                const existeIndex = localStorageIn.map(function(e){
+                    return e.id_item;
+                }).indexOf(optionProduit.id_item);
+                    if(existeIndex == -1){//s'il ne l'a pas encore, je le push)
+                        localStorage.push(optionProduit);//new prod.
+                    }else{//je les cumule
+                        const quantityCumule = optionProduit.quantity + localStorageIn[existeIndex].quantity;
+                        //METTRE À JOUR QTÉ CUMULÉE AVEC TEDDY DÉJÀ PRÉSENT
+                            localStorageIn[existeIndex].quantity = quantityCumule;
+                    }
+                localStorage.setItem("produit", JSON.stringify(localStorageIn));
+            };     
         });
  
         }
