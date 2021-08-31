@@ -6,19 +6,17 @@ let localStorageIn = JSON.parse(localStorage.getItem("produit"));
 const voirPanier = document.getElementById("containerPanier")
 //SI PANIER VIDE ou(||)PRODUIT SUPPRIMÉ (2 CONDITIONS)
     if(localStorageIn === null || localStorageIn == 0){
-    const panierVide = 
-    `<div>
-        <p> 
-            <i id="panierVide" class="fas fa-cart-arrow-down panier-vide"></i> Hélas, votre Panier est vide pour le moment ! </br/>
-            Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down">
-            </i>
-        </p>
-    </div>`;
+        const panierVide = 
+        `<div>
+            <p> 
+                <i id="panierVide" class="fas fa-cart-arrow-down panier-vide"></i> Hélas, votre Panier est vide pour le moment ! </br/>
+                Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down">
+                </i>
+            </p>
+        </div>`;
         voirPanier.innerHTML = panierVide;
-    }else{
+    } else{
         for(j = 0; j < localStorageIn.length; j++){
-            console.log("localStorageIn[j]")
-            console.log(localStorageIn[j]);
             voirPanier.innerHTML += 
                 `<div class="item-panier">
                     <div class="panier_uno">
@@ -115,9 +113,6 @@ const voirForm = () =>{
             <label for="ville">Ville :</label><span id="villeManquante"></span><br/>
             <input type="text" id="ville" name="ville" required  placeholder="ex:  Paris"/>
         </div>
-        <div class="box_size2">
-        <label for="codePostal">codePostal :</label><span id="codePostalManquant"></span><br/>
-        <input type="text" id="codePostal" name="codePostal" required  placeholder="ex:  75001"/>
     </div>
         <div class="box_size2">
             <label for="email">E-mail :</label><span id="emailManquant"></span><br/>
@@ -142,15 +137,13 @@ const sendForm = document.querySelector("#formSend");
 sendForm.addEventListener("click", (event) =>{
     event.preventDefault(); 
     //RÉCUPÉRER
-    const formValues = {      
-        nom : document.querySelector("#nom").value,
-        prenom : document.querySelector("#prenom").value,
-        adresse : document.querySelector("#adresse").value,
-        ville : document.querySelector("#ville").value,
-        codePostal : document.querySelector("#codePostal").value,
+    const contact = {  
+        firstName: document.querySelector("#prenom").value,    
+        lastName : document.querySelector("#nom").value,
+        address : document.querySelector("#adresse").value,
+        city : document.querySelector("#ville").value,
         email : document.querySelector("#email").value
     }
-    console.log(formValues);
     
     //VALIDATION FORMULAIRE
     //VAR PATTERN NOM/PRÉNOM/VILLE
@@ -159,9 +152,6 @@ sendForm.addEventListener("click", (event) =>{
     }
     const patternAdresse = (value) =>{
         return /^[A-Za-z0-9\s]{2,50}$/.test(value);
-    }
-    const patterncodePostal = (value) =>{
-        return /^[0-9]{5}$/.test(value);
     }
     const patternEmail = (value) => {
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
@@ -181,7 +171,7 @@ sendForm.addEventListener("click", (event) =>{
 
     //CONTÔLE DES DONNÉES
     function nomControle(){   
-        const leNom = formValues.nom;
+        const leNom = contact.nom;
         if(pattern(leNom)){
             inputManquantVide("nomManquant");
             return true; 
@@ -192,7 +182,7 @@ sendForm.addEventListener("click", (event) =>{
         };
     };
     function prenomControle(){   
-        const lePrenom = formValues.prenom;
+        const lePrenom = contact.prenom;
         if(pattern(lePrenom)){
             inputManquantVide("prenomManquant");
             return true; 
@@ -203,7 +193,7 @@ sendForm.addEventListener("click", (event) =>{
         }; 
     };
     function adresseControle(){   
-        const lAdresse = formValues.adresse;
+        const lAdresse = contact.adresse;
         if(patternAdresse(lAdresse)){
             inputManquantVide("adresseManquante");
             return true; 
@@ -214,7 +204,7 @@ sendForm.addEventListener("click", (event) =>{
         }; 
     };
     function villeControle(){   
-        const laVille = formValues.ville;
+        const laVille = contact.ville;
         if(pattern(laVille)){
             inputManquantVide("villeManquante");
             return true; 
@@ -224,19 +214,8 @@ sendForm.addEventListener("click", (event) =>{
             return false; 
         };
     };
-    function codePostalControle(){   
-        const leCodePostal = formValues.codePostal;
-        if(patterncodePostal(leCodePostal)){
-            inputManquantVide("codePostalManquant");
-            return true; 
-        }else{
-            inputManquantVide("codePostalManquant");
-            alert("CODE POSTAL : Il doit être composé de 5 chiffres uniquement.");
-            return false; 
-        };
-    };
     function emailControle(){   
-        const lEmail = formValues.email;
+        const lEmail = contact.email;
         if(patternEmail(lEmail)){
             inputManquantVide("emailManquant");
             return true; 
@@ -248,27 +227,28 @@ sendForm.addEventListener("click", (event) =>{
     };
 
     //SEND LOCAL STORAGE APRÈS VÉRIFICATIONS
-    if(nomControle() && prenomControle() && adresseControle() && villeControle() && codePostalControle() && emailControle()){ 
-        localStorage.setItem("formValues", JSON.stringify(formValues));
-            localStorage.setItem("prixTotal", JSON.stringify(totalPanier));
-    //METTRE LE FORMVALUES/CONTENU LS DS OBJET PR SEND QD VÉRIFIÉ
-        const sendServer = {
-            localStorageIn,
-            formValues,
-            totalPanier 
-        };
-        envoiServer(sendServer);
+    if(nomControle() && prenomControle() && adresseControle() && villeControle() && emailControle()){ 
+        localStorage.setItem("formValues", JSON.stringify(contact));
+        localStorage.setItem("prixTotal", JSON.stringify(totalPanier));
+        let products = [];
+        if(localStorageIn !== null) {
+            for(let l = 0 ; l < localStorageIn.length; l++ ) {
+                products.push(localStorageIn[l].id_item);
+            }
+        }
+        const dataToSend = JSON.stringify({ contact, products });
+        envoiServer(dataToSend);
     }else{
         alert("Veuillez vous assurer que le formulaire soit bien rempli.");
     };  
 });
 //SEND AU SERVER AVEC API FETCH / MÉTHODE POST
 //fonction send server
-function envoiServer(sendServer){
+function envoiServer(dataToSend){
    const promiseServer = 
 fetch("http://localhost:3000/api/teddies/order",{
        method: "POST",
-       body: JSON.stringify(sendServer),
+       body: dataToSend,
        headers: {
            "content-type" : "application/json",
        },
@@ -283,9 +263,9 @@ fetch("http://localhost:3000/api/teddies/order",{
                    console.log(`reponse ok: ${response.ok}`);
             //RÉCUPÉRARTION ID RESPONSE
                     console.log("Id commande");
-                    console.log(contenuServer._id); 
+                    console.log(contenuServer.orderId); 
             //METTRE ID DS LS
-                    localStorage.setItem("responseId", contenuServer._id);
+                    localStorage.setItem("responseId", contenuServer.orderId);
             //AFFICHER ID 
                     window.location = "confirm.html";
 
