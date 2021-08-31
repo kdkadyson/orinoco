@@ -16,10 +16,9 @@ const voirPanier = document.getElementById("containerPanier")
     </div>`;
         voirPanier.innerHTML = panierVide;
     }else{
-          for(j = 0; j < localStorageIn.length; j++)
-          {
+        for(j = 0; j < localStorageIn.length; j++){
             console.log("localStorageIn[j]")
-              console.log(localStorageIn[j]);
+            console.log(localStorageIn[j]);
             voirPanier.innerHTML += 
                 `<div class="item-panier">
                     <div class="panier_uno">
@@ -38,7 +37,7 @@ const voirPanier = document.getElementById("containerPanier")
                     </div>
                 </div>`;
         }
-}
+    }
     //SUPPRIMER PRODUIT SELON L'ID AU CLICK
     let removeItem = document.querySelectorAll("#supprimerItem");
     
@@ -54,7 +53,6 @@ const voirPanier = document.getElementById("containerPanier")
         window.location.href = "panier.html"
     });
 }
-    
 //VIDER PANIER (méthode insert adjacent html pr ne pas réécrire le contenu de ma div)
 const toutVider = `<a class="bouton_vider"> Vider mon Panier </a>`;
 voirPanier.insertAdjacentHTML("beforeend", toutVider);
@@ -71,10 +69,12 @@ window.location.href = "panier.html";
 });
 
 //CALCULER /DISPLAY LE PRIX TOTAL DU PANIER
-//RÉCUPÉRER LES PRIX DU PANIER / B. FOR PR CHERCHER PRIX
+//RÉCUPÉRER LES PRIX DU PANIER / IF LS PAS VIDE => B. FOR PR CHERCHER PRIX 
 let totalPanier = 0;
-for(let l = 0; l < localStorageIn.length; l++){
-    totalPanier += localStorageIn[l].price *localStorageIn[l].quantity;
+if( localStorageIn !== null){
+    for(let l = 0; l < localStorageIn.length; l++){
+        totalPanier += localStorageIn[l].price *localStorageIn[l].quantity; 
+    }
 }
 //ADDITIONNER LE TOTAL PANIER (MÉTHODE REDUCE)
 /*const calculer = (accumulator, currentValue) => accumulator + currentValue;
