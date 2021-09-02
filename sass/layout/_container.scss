@@ -18,7 +18,7 @@
         height: 25rem;
         width: 100rem;
         @include responsive(tablet){
-            width: 48rem;
+            width: 43rem;
             height: 20rem;
             margin-right: 60px;
         }
@@ -401,21 +401,36 @@
     //////////// PAGE 3 PANIER 
 
 main{
+    @include responsive(tablet){
+        @include flex(column, center)    
+    }
+    @include responsive(mobile){
+        @include flex(column, center)    
+    }
     @include border;
     .panier-vide{
-        height: 400px;//oter
+        @include responsive(tablet){
+            margin-left: -0px; 
+        }
+        @include responsive(mobile){
+            margin-left: -0px;    
+        }
+        text-align: center;
         @include font-weight(600);
         font-size: 35px; 
         font-style: oblique;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-bottom: 4px solid $colour-secondary;//oter 
+        margin-left: 100px;
         .fas{
             color: $colour-black;
         }
     }
     .container-panier{
+        @include responsive(tablet){
+            @include flex(column, center)
+        }
+        @include responsive(mobile){
+            @include flex(column, center)   
+        }
         @include flex(row, space-evenly);
         flex-wrap: wrap;
     }
@@ -482,8 +497,11 @@ main{
             font-size: 30px;
             @include font-weight;
             text-align: center;
+            @include responsive(tablet){
+                margin-left: 20px; 
+            }
             @include responsive(mobile){
-                margin-right: 330px;
+               margin-left: 20px; 
             }
         }
         
@@ -507,6 +525,10 @@ main{
         }    
     }
     .remerciement{
+        @include responsive(tablet){
+            margin-left: 50px;
+            margin-right: 30px;
+        }
         border-left: 3px solid $colour-primary;
         border-right: 3px solid $colour-primary;
         padding-left: 30px;

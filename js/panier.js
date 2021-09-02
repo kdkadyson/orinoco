@@ -8,10 +8,9 @@ const voirPanier = document.getElementById("containerPanier")
     if(localStorageIn === null || localStorageIn == 0){
         const panierVide = 
         `<div>
-            <p> 
-                <i id="panierVide" class="fas fa-cart-arrow-down panier-vide"></i> Hélas, votre Panier est vide pour le moment ! </br/>
-                Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down">
-                </i>
+            <p id="panierVide" class="panier-vide"> 
+                <i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
+                Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i>
             </p>
         </div>`;
         voirPanier.innerHTML = panierVide;
@@ -29,7 +28,7 @@ const voirPanier = document.getElementById("containerPanier")
                                 <div class="teddy-quantity"> Quantité : ${localStorageIn[j].quantity}</div>
                                 <div class="teddy-total"> Total : ${localStorageIn[j].quantity * localStorageIn[j].price} €</div>
                                 <input type="button"value="Supprimer" 
-                                id="supprimerItem"/></input>
+                                id="supprimerItem" class="supprimer-item"/></input>
                             </div>
                         </div>
                     </div>
@@ -53,7 +52,7 @@ const voirPanier = document.getElementById("containerPanier")
 }
 //VIDER PANIER (méthode insert adjacent html pr ne pas réécrire le contenu de ma div)
 const toutVider = `<a class="bouton_vider"> Vider mon Panier <i class="fas fa-trash"></i></a>`;
-voirPanier.insertAdjacentHTML("beforeend", toutVider);
+voirPanier.insertAdjacentHTML("afterend", toutVider);
 //SÉLECTIONER BTN VIDER PANIER
 const btnSupprimerPanier = document.querySelector(".bouton_vider");
 //SUPPRESION KEY PRODUIT DU LS
@@ -118,7 +117,7 @@ const voirForm = () =>{
             <label for="email">E-mail :</label><span id="emailManquant"></span><br/>
             <input type="email" id="email" name="email" required placeholder="ex:  oribear@gmail.fr"/>
         </div>                                 
-        <input type="submit" value="Commander" " id="formSend" class="form_send"/>
+        <input type="submit" value="Commander" " id="formSend" class="form-send"/>
         <a href="#" class="form-close">&times;
         </a>
     </fieldset>
@@ -173,8 +172,6 @@ sendForm.addEventListener("click", (event) =>{
     function nomControle(){   
         const leNom = contact.nom;
         if(pattern(leNom)){
-            console.log("leNom");
-            console.log(leNom);
             inputManquantVide("nomManquant");
             return true; 
         }else{
@@ -222,7 +219,7 @@ sendForm.addEventListener("click", (event) =>{
             inputManquantVide("emailManquant");
             return true; 
         }else{
-            inputManquantVide("emailManquant");
+            inputManquant("emailManquant");
             alert("email (@) : Votre email n'est pas valide.");
             return false; 
         };
@@ -248,38 +245,30 @@ sendForm.addEventListener("click", (event) =>{
 //fonction send server
 function envoiServer(dataToSend){
    const promiseServer = 
-fetch("http://localhost:3000/api/teddies/order",{
-       method: "POST",
-       body: dataToSend,
-       headers: {
-           "content-type" : "application/json",
-       },
-   }); 
+        fetch("http://localhost:3000/api/teddies/order",{
+            method: "POST",
+            body: dataToSend,
+            headers: {
+                "content-type" : "application/json",
+            },
+        }); 
       
-//RÉCUPÉRER RÉPONSE SERVER /GESTION ERREUR
-promiseServer.then(async(response) =>{
-    try {  
-        const contenuServer = await response.json();
-        console.log("contenuServer");
-        console.log(contenuServer);
-        if(response.ok){
-            console.log(`reponse ok: ${response.ok}`);
-        //RÉCUPÉRARTION ID RESPONSE
-                console.log("Id commande");
-                console.log(contenuServer.orderId); 
-        //METTRE ID DS LS
-                localStorage.setItem("responseId", contenuServer.orderId);
-        //AFFICHER ID 
-                window.location = "confirm.html";
+    //RÉCUPÉRER RÉPONSE SERVER /GESTION ERREUR
+    promiseServer.then(async(response) =>{
+        try {  
+            const contenuServer = await response.json();
 
-        }else{
-            console.log(`reponse server: ${response.status}`);
-            alert(`Problème avec server : erreur ${response.status}`)
+            if(response.ok){
+            //METTRE ID DS LS
+                localStorage.setItem("responseId", contenuServer.orderId);
+            //AFFICHER ID 
+                window.location = "confirm.html";
+            }else{
+                alert(`Problème avec server : erreur ${response.status}`)
+            };
+       
+        }catch(err){
+            alert(`Erreur du catch()${err}`);  
         };
-    } catch (err) {
-        console.log("catch");  
-        console.log(err);
-        alert(`Erreur du catch()${err}`);  
-    };
-}); 
+    }); 
 }

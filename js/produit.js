@@ -56,11 +56,12 @@ function voirArticle(teddyId){
 
             // OPTIONS QUANTITÉ
             const quantityOption = 
-         ` <option value="1">1</option>
+          ` <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>`;
+
             //METTRE QUANTITÉ DS HTML
             const quantityNumber = 
             document.getElementById("teddyQuantity");
@@ -73,7 +74,6 @@ function voirArticle(teddyId){
                 event.preventDefault();//pr ne pas reactualiser la page qdon rappuie sue lz btn
             //choix du user color/qte ds var
             const choixQuantite = parseInt(quantityNumber.value);
-            console.log(choixQuantite);
         
             //RÉCUPERER VALEUR DE CHOIX
             let optionProduit = {//objet avec ses clés/valeur
@@ -83,8 +83,6 @@ function voirArticle(teddyId){
                 quantity : choixQuantite,
                 price : product.price / 100,
             };
-            console.log("optionProduit");
-            console.log(product.price);
             
             //RÉCUPÉRER PRODUIT SELECTIONNÉ/ VERIFIER si/ou CRÉER LS / ENVOYER AU LOCAL STORAGE
             let localStorageIn = JSON.parse(localStorage.getItem("produit"));
@@ -124,6 +122,4 @@ function voirArticle(teddyId){
  
         }
     })
-}
-            
-                
+}              

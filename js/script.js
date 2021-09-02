@@ -18,13 +18,6 @@ fetch("http://localhost:3000/api/teddies")
                     </div>
                 </div>
             </div>`//$ pr mettre var ds html
-        document.getElementById("voirArticle").href += `?id=${teddy._id}`;//backtic au lieu de id + teddy._id
+        document.getElementById("voirArticle").href += `?id=${teddy._id}`;//backtick au lieu de id + teddy._id
     }
-    
 });
-//SI ERREUR API
-/*.catch(function (err) {
-        alert("Désolé une erreur est survenue, ou la page démandée n'existe pas ! Veuillez réesayer")
-        });*/
-
-

@@ -12,8 +12,7 @@
     color: $colour-white;
     border: 3px solid $colour-white;  
     font-family: Georgia, 'Times New Roman', Times, serif;
-}
-.voir-article:hover{
+    &:hover{
     width: 150px;
     height: 50px;
     background-color: $colour-white;
@@ -21,6 +20,7 @@
     border: 1px solid $colour-white;
     border-radius: 20px 20px;
     font-size: 20px;
+    }
 }
             // BOUTON PAGE PRODUIT 
 
@@ -37,19 +37,19 @@ button{
     font-size: 18px;
     border: 3px solid $colour-white; 
     border-radius: 15px 15px; 
-}
-button:hover{
+    &:hover{
     background-color: $colour-white;
     color: $colour-primary;
     width: 190px;
     height: 50px;
     @include font-weight;
     font-size: 20px;
+    }
 }
             //BOUTON PAGE PANIER
 
 // BOUTON Supprimer  
-#supprimerItem{
+.supprimer-item{
     width: 80px;
     height: 30px;
     border-radius: 10px 10px;
@@ -64,9 +64,14 @@ button:hover{
     }
 }
 
-
 //BOUTON Vider Panier
 .bouton_vider{
+    @include responsive(tablet){
+        margin-left: 255px; 
+    }
+    @include responsive(mobile){
+        margin-left: 155px; 
+     }
     width: 220px;
     height: 30px;
     border: 3px solid $colour-primary;
@@ -74,9 +79,8 @@ button:hover{
     cursor: pointer; 
     text-align: center;
     background-color: $colour-primary ;
-    color: $colour-black;
-    margin-top: 100px;
-    padding-top: 10px;
+    margin-right: -980px;
+    padding: 10px 5px;
     font-size: 20px;
     @include font-weight;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -88,14 +92,19 @@ button:hover{
     border: 3px solid red;
     font-size: 22px;
     }
+    .fas{
+        color: red;
+    }
 }
-
-    
 
 // BOUTON Valider Panier 
 .bouton_panier{
+    @include responsive(tablet){
+        margin-left: 255px; 
+        margin-top: 80px;
+    }
     @include responsive(mobile){
-        margin-right: 350px;
+       margin-left: 155px;
         margin-top: 80px;
     }
     display: flex;
@@ -111,6 +120,7 @@ button:hover{
     margin-bottom: 30px;
     margin-left: 380px;
     padding-top: 10px;
+    padding-bottom: 5px;
     font-size: 20px;
     @include font-weight;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -124,14 +134,11 @@ button:hover{
     color: $colour-primary;
     }
 }
-.bouton_panier{
-    color: $colour-black;
-}
 
             //FORMULAIRE
 
 // BOUTON SEND
-#formSend{
+.form-send{
     width: 200px;
     height: 50px;
     border: 3px solid $colour-white;
@@ -146,15 +153,15 @@ button:hover{
     align-self: center;
     margin-top: 50px;
     margin-bottom: 40px;
-}
-#formSend:hover{
+    &:hover{
     width: 240px;
     height: 60px;
     background-color: $colour-white;
     font-size: 22px;
     @include font-weight(bolder);
     color: $colour-primary;
-}
-.form_send input:hover{
+    }
+    input:hover{
     color:$colour-primary;
+    }
 }
