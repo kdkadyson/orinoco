@@ -13,7 +13,7 @@ const confirm =
     <h2 id="remerciement" class="remerciement"> Votre commande d'un montant de : ${prixTotal} €</br> à bien été enregistrée.<br/>
         ORIBEAR vous remercie pour votre achat. </h2>
     <div class="confirmation_id">
-        <p>Référence Commande : <span id="confirmationId">${resultOrder}</span></p>
+        <p>Référence Commande : </br><span id="confirmationId">${resultOrder}</span></p>
     </div>
 </div>`;
 displayConfirm.insertAdjacentHTML("afterbegin", confirm);

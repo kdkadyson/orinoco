@@ -10,14 +10,12 @@
     width: 70%;
     height: 100%;
     border: 5px solid $colour-secondary;
-    border-radius: 20px 20px;    
+    border-radius: 20px 20px; 
+    right: 220px; 
+    top: 810px; 
     &:target{
     visibility: visible;
-    opacity: 0.9;
-    }
-    fieldset{
-        top: 90%;//changer
-        right: 219px;
+    opacity: 1;
     }
     legend{
         font-size: 40px;
@@ -48,5 +46,12 @@
         border-radius: 10px 10px;
         font-size: 20px;
         color: $colour-black;
+    }
+    .form-close{
+        color: red;
+        font-size: 60px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        margin-left: 900px;
     }
 }

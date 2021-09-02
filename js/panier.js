@@ -48,11 +48,11 @@ const voirPanier = document.getElementById("containerPanier")
         localStorage.setItem("produit", JSON.stringify(localStorageIn));
         //FENÊTRE POP UP ALERT
         alert("Ce produit va être supprimé de votre Panier.");
-        window.location.href = "panier.html"
+        window.location.href = "panier.html";
     });
 }
 //VIDER PANIER (méthode insert adjacent html pr ne pas réécrire le contenu de ma div)
-const toutVider = `<a class="bouton_vider"> Vider mon Panier </a>`;
+const toutVider = `<a class="bouton_vider"> Vider mon Panier <i class="fas fa-trash"></i></a>`;
 voirPanier.insertAdjacentHTML("beforeend", toutVider);
 //SÉLECTIONER BTN VIDER PANIER
 const btnSupprimerPanier = document.querySelector(".bouton_vider");
@@ -84,7 +84,7 @@ const totalBasket =
         <p> Prix Total : ${totalPanier} € </p>
     </div>`;
 
-voirPanier.insertAdjacentHTML("beforeend", totalBasket);
+voirPanier.insertAdjacentHTML("afterend", totalBasket);
 
 
 
@@ -119,7 +119,7 @@ const voirForm = () =>{
             <input type="email" id="email" name="email" required placeholder="ex:  oribear@gmail.fr"/>
         </div>                                 
         <input type="submit" value="Commander" " id="formSend" class="form_send"/>
-        <a href="#" class="form_close">&times;
+        <a href="#" class="form-close">&times;
         </a>
     </fieldset>
 </form>`;
@@ -173,6 +173,8 @@ sendForm.addEventListener("click", (event) =>{
     function nomControle(){   
         const leNom = contact.nom;
         if(pattern(leNom)){
+            console.log("leNom");
+            console.log(leNom);
             inputManquantVide("nomManquant");
             return true; 
         }else{
@@ -252,31 +254,32 @@ fetch("http://localhost:3000/api/teddies/order",{
        headers: {
            "content-type" : "application/json",
        },
-   });    
+   }); 
+      
 //RÉCUPÉRER RÉPONSE SERVER /GESTION ERREUR
-       promiseServer.then(async(response) =>{
-           try {  
-               const contenuServer = await response.json();
-               console.log("contenuServer");
-               console.log(contenuServer);
-               if(response.ok){
-                   console.log(`reponse ok: ${response.ok}`);
-            //RÉCUPÉRARTION ID RESPONSE
-                    console.log("Id commande");
-                    console.log(contenuServer.orderId); 
-            //METTRE ID DS LS
-                    localStorage.setItem("responseId", contenuServer.orderId);
-            //AFFICHER ID 
-                    window.location = "confirm.html";
+promiseServer.then(async(response) =>{
+    try {  
+        const contenuServer = await response.json();
+        console.log("contenuServer");
+        console.log(contenuServer);
+        if(response.ok){
+            console.log(`reponse ok: ${response.ok}`);
+        //RÉCUPÉRARTION ID RESPONSE
+                console.log("Id commande");
+                console.log(contenuServer.orderId); 
+        //METTRE ID DS LS
+                localStorage.setItem("responseId", contenuServer.orderId);
+        //AFFICHER ID 
+                window.location = "confirm.html";
 
-               }else{
-                   console.log(`reponse server: ${response.status}`);
-                   alert(`Problème avec server : erreur ${response.status}`)
-               };
-           } catch (err) {
-               console.log("catch");  
-               console.log(err);
-               alert(`Erreur du catch()${err}`);  
-           };
-       }); 
+        }else{
+            console.log(`reponse server: ${response.status}`);
+            alert(`Problème avec server : erreur ${response.status}`)
+        };
+    } catch (err) {
+        console.log("catch");  
+        console.log(err);
+        alert(`Erreur du catch()${err}`);  
+    };
+}); 
 }
