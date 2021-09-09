@@ -4,13 +4,15 @@ let localStorageIn = JSON.parse(localStorage.getItem("produit"));
 
 //DISPLAY PRODUIT
 const voirPanier = document.getElementById("containerPanier")
-//SI PANIER VIDE ou(||)PRODUIT SUPPRIMÉ (2 CONDITIONS)
+//SI PANIER VIDE ou PRODUIT SUPPRIMÉ (2 CONDITIONS)
     if(localStorageIn === null || localStorageIn == 0){
         const panierVide = 
         `<div>
             <p id="panierVide" class="panier-vide"> 
-                <i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! </br/>
-                Retournez sur la page d'accueil et vous pourrez le remplir.<i class="fas fa-cart-arrow-down"></i>
+                <i class="fas fa-cart-arrow-down"></i> Hélas, votre Panier est vide pour le moment ! 
+                </br/>
+                Retournez sur la page d'accueil et vous pourrez le remplir.
+                <i class="fas fa-cart-arrow-down"></i>
             </p>
         </div>`;
         voirPanier.innerHTML = panierVide;
@@ -73,10 +75,6 @@ if( localStorageIn !== null){
         totalPanier += localStorageIn[l].price *localStorageIn[l].quantity; 
     }
 }
-//ADDITIONNER LE TOTAL PANIER (MÉTHODE REDUCE)
-/*const calculer = (accumulator, currentValue) => accumulator + currentValue;
-const prixTotal = totalPanier.reduce(calculer,0);//0= valeur par défaut qd panier videsinon erreur */
-
 //DISPLAY DS HTML
 const totalBasket =
     `<div class="prix-panier">
@@ -86,8 +84,7 @@ const totalBasket =
 voirPanier.insertAdjacentHTML("afterend", totalBasket);
 
 
-
-                //FORMULAIRE
+/////////////////////// FORMULAIRE //////////////////////////////
 
 //DISPLAY FORM
 const voirForm = () =>{
@@ -112,12 +109,11 @@ const voirForm = () =>{
             <label for="ville">Ville :</label><span id="villeManquante"></span><br/>
             <input type="text" id="ville" name="ville" required  placeholder="ex:  Paris"/>
         </div>
-    </div>
         <div class="box_size2">
             <label for="email">E-mail :</label><span id="emailManquant"></span><br/>
             <input type="email" id="email" name="email" required placeholder="ex:  oribear@gmail.fr"/>
         </div>                                 
-        <input type="submit" value="Commander" " id="formSend" class="form-send"/>
+        <input type="submit" value="Commander" id="formSend" class="form-send"/>
         <a href="#" class="form-close">&times;
         </a>
     </fieldset>
@@ -158,8 +154,10 @@ sendForm.addEventListener("click", (event) =>{
 
     //VAR ALERT
     const textAlert = (value) =>{
-        return `${value} : Les chiffre et symbole ne sont autorisés \n Ne pas dépasser 25 caractères et en avoir un minimum de 2.`;
+        return `${value} : Les chiffre et symbole ne sont autorisés \n Ne pas dépasser 
+        25 caractères et en avoir un minimum de 2.`;
     }
+    
     //FONCTIONS INPUTS MANQUANTS
     function inputManquantVide(querySelectorId){
         document.querySelector(`#${querySelectorId}`).textContent = "";
@@ -170,7 +168,7 @@ sendForm.addEventListener("click", (event) =>{
 
     //CONTÔLE DES DONNÉES
     function nomControle(){   
-        const leNom = contact.nom;
+        const leNom = contact.lastName;
         if(pattern(leNom)){
             inputManquantVide("nomManquant");
             return true; 
@@ -181,7 +179,7 @@ sendForm.addEventListener("click", (event) =>{
         };
     };
     function prenomControle(){   
-        const lePrenom = contact.prenom;
+        const lePrenom = contact.firstName;
         if(pattern(lePrenom)){
             inputManquantVide("prenomManquant");
             return true; 
@@ -192,7 +190,7 @@ sendForm.addEventListener("click", (event) =>{
         }; 
     };
     function adresseControle(){   
-        const lAdresse = contact.adresse;
+        const lAdresse = contact.address;
         if(patternAdresse(lAdresse)){
             inputManquantVide("adresseManquante");
             return true; 
@@ -203,7 +201,7 @@ sendForm.addEventListener("click", (event) =>{
         }; 
     };
     function villeControle(){   
-        const laVille = contact.ville;
+        const laVille = contact.city;
         if(pattern(laVille)){
             inputManquantVide("villeManquante");
             return true; 

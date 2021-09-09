@@ -35,10 +35,12 @@ function voirArticle(teddyId){
                                 <select id="teddyQuantity" class="teddy-quantity">
                                    
                                 </select>
-                                <p id="teddyPrixTotal" class="teddy-prixtotal" value="Prix total :" ${product.totalprice / 100} € > </p>
+                                <p id="teddyPrixTotal" class="teddy-prixtotal" value="Prix 
+                                total :" ${product.totalprice / 100} € > </p>
                             </div>
-                                <a href="../pagesHTML/panier.html"><button type="submit" id="dansPanier"
-                                class="dans-panier" value="submit">Ajouter au panier</button></a>
+                                <a href="../pagesHTML/panier.html"><button type="submit" 
+                                id="dansPanier" class="dans-panier" value="submit">Ajouter au 
+                                panier</button></a>
                          </div>
                     </div>
                 </div>`;
@@ -92,7 +94,7 @@ function voirArticle(teddyId){
                 if(window.confirm(`(${choixQuantite}) ${product.name} a bien été ajouter à votre Panier.  Consulter votre panier : OK, ou revenir à l'accueil : ANNULER.`)){
                     window.location.href = "panier.html";
                 }else{
-                    window.location.href = "home.html";
+                    window.location.href = "../index.html";
                 }
             }
             // fonction send au ls

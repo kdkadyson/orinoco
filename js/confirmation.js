@@ -8,7 +8,8 @@ const prixTotal = localStorage.getItem("prixTotal");
 const displayConfirm = document.getElementById("containerConfirm");
 const confirm = 
 `<div class="confirmation__resume">
-    <h2 id="remerciement" class="remerciement"> Votre commande d'un montant de : ${prixTotal} €</br> à bien été enregistrée.<br/>
+    <h2 id="remerciement" class="remerciement"> Votre commande d'un montant de : 
+    ${prixTotal} €</br> à bien été enregistrée.<br/>
         ORIBEAR vous remercie pour votre achat. </h2>
     <div class="confirmation_id">
         <p>Référence Commande : </br><span id="confirmationId">${resultOrder}</span></p>
