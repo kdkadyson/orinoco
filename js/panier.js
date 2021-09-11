@@ -16,6 +16,7 @@ const voirPanier = document.getElementById("containerPanier")
             </p>
         </div>`;
         voirPanier.innerHTML = panierVide;
+        /*$(".bouton_panier").css("display", none);*/
     } else{
         for(j = 0; j < localStorageIn.length; j++){
             voirPanier.innerHTML += 
@@ -83,6 +84,17 @@ const totalBasket =
 
 voirPanier.insertAdjacentHTML("afterend", totalBasket);
 
+//afficher Form seulement si produit ds lS
+const afficherForm = document.getElementById("boutonsPanier");
+if(localStorageIn === null || localStorageIn == 0){
+    afficherForm.innerHTML = panierVide; 
+}else{
+    for(j = 0; j < localStorageIn.length; j++){
+        afficherForm;
+    }
+}
+
+
 
 /////////////////////// FORMULAIRE //////////////////////////////
 
@@ -122,7 +134,7 @@ const voirForm = () =>{
 //mettre ds html
     voirPanier.insertAdjacentHTML("beforeend", Form);
 };
-//afficher
+//afficher ds html
 voirForm();
 
 //SÉLECTION DU BOUTON SEND FORM

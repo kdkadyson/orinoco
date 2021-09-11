@@ -72,6 +72,7 @@ button{
     @include responsive(mobile){
         margin-left: 155px; 
      }
+    display: true;
     width: 220px;
     height: 30px;
     border: 3px solid $colour-primary;
@@ -107,7 +108,7 @@ button{
        margin-left: 155px;
         margin-top: 80px;
     }
-    display: flex;
+    display: true;
     justify-content: center;
     width: 220px;
     height: 30px;
