@@ -91,7 +91,7 @@ function voirArticle(teddyId){
             
             //FENÊTRE POP UP CONFIRM
             const popupFenetre = () =>{
-                if(window.confirm(`(${choixQuantite}) ${product.name} a bien été ajouter à votre Panier.  Consulter votre panier : OK, ou revenir à l'accueil : ANNULER.`)){
+                if(window.confirm(`(${choixQuantite}) ${product.name} a bien été ajouté à votre Panier.  Consulter votre panier : OK, ou revenir à l'accueil : ANNULER.`)){
                     window.location.href = "panier.html";
                 }else{
                     window.location.href = "../index.html";

@@ -159,7 +159,7 @@ sendForm.addEventListener("click", (event) =>{
 
     //VAR ALERT
     const textAlert = (value) =>{
-        return `${value} : Les chiffre et symbole ne sont autorisés \n Ne pas dépasser 25 caractères et en avoir un minimum de 2.`;
+        return `${value} : Les chiffres et symboles ne sont pas autorisés \n Ne pas dépasser 25 caractères et en avoir un minimum de 2.`;
     }
     
     //FONCTIONS INPUTS MANQUANTS
