@@ -1,22 +1,33 @@
         /* PAGE 3 PANIER*/
 
+
 .form{
+    @include responsive(tablet){
+        right: 20px;
+    }
+    @include responsive(mobile){
+        right: 20px;
+        
+    }
     visibility: hidden;
     @include flex(column, space-evenly);
     position: absolute;
     text-align: center;
     background: $colour-tertiary;
-    width: 70%;
     border: 5px solid $colour-secondary;
     border-radius: 20px 20px; 
-    right: 220px; 
-    top: 640px;
+    width: 100px;
+    right: 290px; 
+    top: 660px;
     padding-top: 60px;
     &:target{
     visibility: visible;
     opacity: 1;
     }
     legend{
+        @include responsive(mobile){
+             font-size: 30px;
+        }
         position: relative;
         top: 50px;
         font-size: 40px;
@@ -49,10 +60,18 @@
         color: $colour-black;
     }
     .form-close{
+        @include responsive(tablet){
+            margin-left: 700px;
+        }
+        @include responsive(mobile){
+            margin-left: 500px;
+
+        }
         color: red;
         font-size: 60px;
         font-weight: 900;
         margin-bottom: 20px;
-        margin-left: 900px;
+        margin-left: 800px;
+        padding-right: 20px;
     }
 }

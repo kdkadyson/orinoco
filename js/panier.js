@@ -16,7 +16,10 @@ const voirPanier = document.getElementById("containerPanier")
             </p>
         </div>`;
         voirPanier.innerHTML = panierVide;
-        /*$(".bouton_panier").css("display", none);*/
+        document.querySelector(".bouton_panier").style.display = "none";
+        document.getElementById("boutonsPanier").style.display = "none";
+        document.querySelector(".bouton_vider").style.display = "none";
+        document.querySelector(".prix-panier").style.display = "none";
     } else{
         for(j = 0; j < localStorageIn.length; j++){
             voirPanier.innerHTML += 
@@ -84,16 +87,6 @@ const totalBasket =
 
 voirPanier.insertAdjacentHTML("afterend", totalBasket);
 
-//afficher Form seulement si produit ds lS
-const afficherForm = document.getElementById("boutonsPanier");
-if(localStorageIn === null || localStorageIn == 0){
-    afficherForm.innerHTML = panierVide; 
-}else{
-    for(j = 0; j < localStorageIn.length; j++){
-        afficherForm;
-    }
-}
-
 
 
 /////////////////////// FORMULAIRE //////////////////////////////
@@ -104,7 +97,7 @@ const voirForm = () =>{
     const Form = 
 `<form method="POST">
     <fieldset id="form" class="form">
-        <legend>Passer votre commande en renseignant vos informations ci-dessous :</legend>
+        <legend>Passer votre commande en renseignant <br/> vos informations ci-dessous :</legend>
         <div class="box_size2">
             <label for="nom">Nom :</label><span id="nomManquant"></span><br/>
             <input type="text" id="nom" name="nom" required placeholder="ex:  LeBienvenue"/>
@@ -166,8 +159,7 @@ sendForm.addEventListener("click", (event) =>{
 
     //VAR ALERT
     const textAlert = (value) =>{
-        return `${value} : Les chiffre et symbole ne sont autorisés \n Ne pas dépasser 
-        25 caractères et en avoir un minimum de 2.`;
+        return `${value} : Les chiffre et symbole ne sont autorisés \n Ne pas dépasser 25 caractères et en avoir un minimum de 2.`;
     }
     
     //FONCTIONS INPUTS MANQUANTS

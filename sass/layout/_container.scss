@@ -21,11 +21,13 @@
             width: 43rem;
             height: 20rem;
             margin-right: 60px;
+            font-weight: 900;
         }
         @include responsive(mobile){
             width: 36rem;
             height: 15rem;
             margin-right: 63.5px;
+            font-weight: 900;
         }
     }
     .banniere_text{
@@ -331,6 +333,7 @@
                 @include responsive(tablet){
                 }
                 @include responsive(mobile){
+                    margin-top: 100px;
                     font-size: 35px
                 }
             }
@@ -346,8 +349,18 @@
                 }
             }
             .teddy-prix{
+                
                 @include font-weight;
                 font-size: 35px;
+            }
+            label{
+                @include responsive(tablet){
+                    margin-left: -35px
+                }
+                @include responsive(mobile){
+                    margin-left: -55px
+                }
+                margin-left: -5px
             }
             .choix-quantity{
                 @include flex(row, space-evenly);
@@ -378,15 +391,11 @@
                 align-self: center;
                 margin-top: 25px;
                 margin-bottom: 20px;
-                margin-left: -145px;
+                margin-left: -150px;
                 cursor: pointer;
                 background-color: $colour-white;
                 color: #000;
                 font-size: 18px;
-            }
-            .teddy-prixtotal{
-                @include font-weight;
-                font-size: 30px;
             }
             @keyframes produit-load{
                 0%{
@@ -398,7 +407,7 @@
             }
 }
 
-    //////////// PAGE 3 PANIER 
+//////////////////////////// PAGE 3 PANIER 
 
 main{
     @include responsive(tablet){
@@ -408,6 +417,7 @@ main{
         @include flex(column, center)    
     }
     @include border;
+    padding-bottom: 60px;
     .panier-vide{
         @include responsive(tablet){
             margin-left: -0px; 
@@ -420,6 +430,7 @@ main{
         font-size: 35px; 
         font-style: oblique;
         margin-left: 100px;
+        margin-bottom: 100px;
         .fas{
             color: $colour-black;
         }
@@ -434,7 +445,7 @@ main{
         @include flex(row, space-evenly);
         flex-wrap: wrap;
     }
-    h1{
+    h2{
         margin-bottom: 80px;
         margin-top: 80px;
         @include font-weight(600);
@@ -493,6 +504,7 @@ main{
         }
         .prix-panier p{
             margin-top: 140px;
+            margin-bottom: 40px;
             margin-left: -370px;
             font-size: 30px;
             @include font-weight;
